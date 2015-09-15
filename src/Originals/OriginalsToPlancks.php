@@ -12,7 +12,7 @@ use PlanckId\Planck\Plancks;
  * This takes in `Original`(s) and adds them to the OriginalAndPlanckMap, mapping them with Planck
  */
 class OriginalsToPlancks extends InvokableFloComponent {
-    protected $ports = array(['in', 'in', []], 'error', 'out');
+    protected $ports = array(['in', 'in', []], 'err', 'out');
 
     public function __construct() {
         $this->addPorts($this->ports);

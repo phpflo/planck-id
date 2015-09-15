@@ -14,7 +14,7 @@ class RegexInOut extends FloComponent
 {   
     protected $regex = "";
     protected $ports = array(
-        ['out', 'error'], 
+        ['out', 'err'], 
         'in',   
         'out',  
     );
@@ -38,8 +38,8 @@ class RegexInOut extends FloComponent
         if (is_array($matches)) 
             $matches = Arr::flatten($matches);
 
-        if (is_array($matches) && count($matches) === 0 && $this->outPorts['error']->isConnected()) 
-            $this->outPorts['error']->send($matches);
+        if (is_array($matches) && count($matches) === 0 && $this->outPorts['err']->isConnected()) 
+            $this->outPorts['err']->send($matches);
 
         Emitter::emit('regex.inout', $matches, Static::class);
 

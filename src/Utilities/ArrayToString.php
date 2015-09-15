@@ -9,7 +9,7 @@ class ArrayToString extends FloComponent
     protected $delimiter = ',';
 
     public function __construct() {
-        $this->addPorts([['in', 'in', array()], ['in', 'delimiter', array()], 'error', 'out']);
+        $this->addPorts([['in', 'in', array()], ['in', 'delimiter', array()], 'err', 'out']);
         $this->onIn('delimiter', 'data', 'setDelimiter');
         $this->onIn('in', 'data', 'output');        
     }    

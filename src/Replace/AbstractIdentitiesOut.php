@@ -15,7 +15,7 @@ abstract class AbstractIdentitiesOut extends FloComponent {
         ['in', 'content', array()], 
         ['in', 'matchedcontent', array()], 
         ['in', 'identities'], 
-        'error', 
+        'err', 
         'out'
     ];
 

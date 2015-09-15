@@ -13,7 +13,7 @@ class ReadRepeater extends FloComponent
     public function __construct() {
         $this->addPorts(array(
             ['in', 'in', array()], 
-            'error', 
+            'err', 
             ['out', 'style'], 
             ['out', 'markup'], 
             ['out', 'replace'], 

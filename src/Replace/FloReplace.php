@@ -21,7 +21,7 @@ class FloReplace extends FloComponent
         $this->addPorts([
             ['in', 'content'], 
             ['in', 'identities'], 
-            'error', 
+            'err', 
             'out',
             ['out', 'contentout', array()],
             ['out', 'identitiesout', array()],
