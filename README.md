@@ -45,6 +45,7 @@ $ php composer.phar install
 
 ## Use
 Either
+
 1. Open command line and change directories to `your-project/planck-id`, then run `php index.php YourFileNameHere`
 2. Navigate your browser to `your-project/planck-id/index.php?filename=yourFullFileUrl` or `your-project/planck-id/index.php?content=allOfYourContentHere`
 
