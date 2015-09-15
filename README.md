@@ -61,3 +61,5 @@ Either
 (_these tests use a snippet from thegrids website_)
 
 ## [Todos](https://github.com/aretecode/planck-id/TODO.md)
+
+[![Build Status](https://secure.travis-ci.org/aretecode/planck-id.svg)](https://travis-ci.org/aretecode/planck-id)]

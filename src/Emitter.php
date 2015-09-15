@@ -22,13 +22,13 @@ class Emitter {
      * @return League\Event\Emitter
      */
     public static function emitter() {  
-        self::default();      
+        self::defaultEmitter();      
         return self::$emitter;
     }
     public static function setEmitter($emitter) {        
         self::$emitter = $emitter;
     }
-    public static function default() {
+    public static function defaultEmitter() {
         if (self::$emitter === null)    
             self::setEmitter(new EventEmitter);
     }    
