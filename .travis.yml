@@ -12,6 +12,7 @@ php:
 
 before_script:
   - wget http://getcomposer.org/composer.phar 
+  - php composer.phar self-update
   - php composer.phar install --dev
   - chmod 777 ./bin/floidentity/test                    # set permission
 
