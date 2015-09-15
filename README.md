@@ -1,4 +1,4 @@
-#PlanckId V0.7.82
+#planck-id V0.7.82
 ![shrinking](http://jonlieffmd.com/wp-content/uploads/2012/01/512px-Scale_one_to_thousand_volume.svg_3.png)
 
 ## What is it?
@@ -27,13 +27,13 @@ Into this:
 ```
 
 ## Graphs
-Put the .json files from [PlanckId/graphs](http://github.com/aretecode/PlanckId/graphs/) into [NoFlo](http://noflojs.org)
+Put the .json files from [planck-id/graphs](http://github.com/aretecode/planck-id/graphs/) into [NoFlo](http://noflojs.org)
 
 ## Installation
-It can be installed from [Packagist](https://packagist.org/PlanckId) using [Composer](https://getcomposer.org/). Make sure your `composer.json` contains:
+It can be installed from [Packagist](https://packagist.org/planck-id) using [Composer](https://getcomposer.org/). Make sure your `composer.json` contains:
 ```json
 require {
-    "aretecode/planckid"
+    "aretecode/planck-id"
 }
 ```
 
@@ -45,18 +45,18 @@ $ php composer.phar install
 
 ## Use
 Either
-1. Open command line and change directories to `your-project/PlanckId`, then run `php index.php YourFileNameHere`
-2. Navigate your browser to `your-project/PlanckId/index.php?filename=yourFullFileUrl` or `your-project/PlanckId/index.php?content=allOfYourContentHere`
+1. Open command line and change directories to `your-project/planck-id`, then run `php index.php YourFileNameHere`
+2. Navigate your browser to `your-project/planck-id/index.php?filename=yourFullFileUrl` or `your-project/planck-id/index.php?content=allOfYourContentHere`
 
 ## Terminology
 * _Planck_: ([Planck length](https://en.wikipedia.org/wiki/Planck_length), in principle, the shortest measurable length.) an instance of the shortest available valid class/id/selector. 
 * _Original_: the _class/id/selector_ before it was turned into a Planck. (I'm open to changing this, feel free to suggest a new term.)
 
 ## Running tests
-1. Run in the browser by navigating to `your-project/PlanckId/tests/Run.php`
-2. Run via the command line by changing your directory to  `PlanckId/bin`
-3. Run through the command line by going to `PlanckId` and running `phpunit`
+1. Run in the browser by navigating to `your-project/planck-id/tests/Run.php`
+2. Run via the command line by changing your directory to  `planck-id/bin`
+3. Run through the command line by going to `planck-id` and running `phpunit`
 
 (_these tests use a snippet from thegrids website_)
 
-## [Todos](https://github.com/aretecode/PlanckId/TODO.md)
+## [Todos](https://github.com/aretecode/planck-id/TODO.md)
