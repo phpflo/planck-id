@@ -1,0 +1,19 @@
+language: php
+
+php:
+  - 5.6
+#  - 7.0
+#  - hhvm
+
+#matrix:
+#  allow_failures:
+#    - php: 7.0
+#  fast_finish: true
+
+before_script:
+  - wget http://getcomposer.org/composer.phar 
+  - php composer.phar install --dev
+  - chmod 777 ./bin/floidentity/test                    # set permission
+
+script: 
+  - ./bin/behat # --config ./bin/planckid  # run behat
