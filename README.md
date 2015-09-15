@@ -32,9 +32,9 @@ Put the .json files from [PlanckId/graphs](http://github.com/aretecode/PlanckId/
 ## Installation
 It can be installed from [Packagist](https://packagist.org/PlanckId) using [Composer](https://getcomposer.org/). Make sure your `composer.json` contains:
 ```json
-    require {
-        "aretecode/planckid"
-    }
+require {
+    "aretecode/planckid"
+}
 ```
 
 then, run: 
