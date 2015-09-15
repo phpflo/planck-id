@@ -28,6 +28,9 @@ class FloComponent extends Component {
 
         // example `inPorts` 
         $portTypeMethod = $portType . 'Ports';
+        
+        if ($portTypeMethod !== 'inPorts' && $portTypeMethod !== 'outPorts') 
+            throw new InvalidArgumentException("attempted to use a non `out` or `in` port, used: `$portTypeMethod`");
 
         // able to be used in debugging
         Emitter::emit('flocomponent.addingPort', ['class' => Static::class, $port]);
@@ -41,7 +44,7 @@ class FloComponent extends Component {
 
     private function errorTest($portType) {
         if (!containsSubString($portType, 'in') && !containsSubString($portType, 'out') && !containsSubString($portType, 'err')) 
-            if ($this->outPorts['err']->isConnected()) 
+            if (isset($this->outPorts['err']) && $this->outPorts['err']->isConnected()) 
                 $this->outPorts['err']->send('did not contain in or out! instead it was: `' . $portType . '`; ');
     }
 
