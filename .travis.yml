@@ -12,6 +12,9 @@ php:
 # - ./bin/behat # --config ./bin/planckid  # run behat  
 #  - chmod 777 ./bin/floidentity/test                    # set permission
 
+before_install:
+    - pip install codecov
+
 before_script:
   - wget http://getcomposer.org/composer.phar 
   - php composer.phar self-update
@@ -19,3 +22,6 @@ before_script:
 
 script: 
   - phpunit
+
+after_success:
+  - codecov
