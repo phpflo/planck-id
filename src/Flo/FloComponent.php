@@ -34,15 +34,15 @@ class FloComponent extends Component {
 
         echo $portTypeMethod;
         echo $portSubType;
-        
+
         // able to be used in debugging
         Emitter::emit('flocomponent.addingPort', ['class' => Static::class, $port]);
 
         // example `$this->inPorts['delimiter'] = new Port`
         if (isset($port[2])) 
-            $this->$portTypeMethod[$portSubType] = new ArrayPort();
+            $this->{$portTypeMethod}[$portSubType] = new ArrayPort();
         else 
-            $this->$portTypeMethod[$portSubType] = new Port();
+            $this->{$portTypeMethod}[$portSubType] = new Port();
     }
 
     private function errorTest($portType) {
