@@ -4,8 +4,7 @@ Feature: HandleAll
   I need to be able to take long identities, classes, and selectors (originals) and make them into their smallest possible form (Plancks.)
 
 Scenario: Extract and Minify Markup and Style Selectors from Contents
-  Given I am in a directory "test"
-  And I have contents:
+  Given I have contents:
   """
   <style type="text/css">#section-acebf433-a6ec-43f6-8166-55c8d129353a {
   text-shadow:0 1px 0 rgba(22, 24, 29, 0.5);
@@ -20,7 +19,7 @@ Scenario: Extract and Minify Markup and Style Selectors from Contents
   """
 
 Scenario: Extract and Minify Markup and Style Selectors from Contents
-  Given I am in a directory "test"
+  Given I am in a directory "test" 
   And I have a file named "scenario-input.html"
   And I have input from file "scenario-input.html"
   When I extract and minify

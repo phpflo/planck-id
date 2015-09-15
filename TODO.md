@@ -43,7 +43,7 @@
 * [ ] extend PHPFlo tests for my extensions
 * [ ] write tests for _every_ Component.
 * [ ] fully implement & test Component `error`s
-* [ ] fix the sub `test` directory the test makes
+* [x] fix the sub `test` directory the test makes
 Scenario: Extract and Minify Markup and Style Selectors from Contents using Filter
 * [ ] test with Styles, but no Scripts. Test with Scripts, but no Styles. Test with Styles & Scripts, but no other Markup.
 * [ ] test to show ensure that longest is first for the sorting originals
@@ -110,3 +110,4 @@ Scenario: Extract and Minify Markup and Style Selectors from Contents using Filt
 * [ ] variable length arguments in FloComponent
 * [ ] implement StaticContent in an alternate way
 * [ ] use [phpDaemon](http://daemon.io) 
+* [ ] extend or revise how to do debugging ports instead of `isConnected` which is seemingly on the wrong side of the pipe.
