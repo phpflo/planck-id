@@ -9,13 +9,13 @@ php:
 #  allow_failures:
 #    - php: 7.0
 #  fast_finish: true
+# - ./bin/behat # --config ./bin/planckid  # run behat  
+#  - chmod 777 ./bin/floidentity/test                    # set permission
 
 before_script:
   - wget http://getcomposer.org/composer.phar 
   - php composer.phar self-update
   - php composer.phar install --dev
-  - chmod 777 ./bin/floidentity/test                    # set permission
 
 script: 
-# - ./bin/behat # --config ./bin/planckid  # run behat  
   - phpunit
