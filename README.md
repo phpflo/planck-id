@@ -1,4 +1,7 @@
-#planck-id V0.7.84
+#PlanckId (planck-id)
+[![Build Status](https://secure.travis-ci.org/aretecode/planck-id.svg)](https://travis-ci.org/aretecode/planck-id)
+[![License](https://poser.pugx.org/aretecode/planck-id/license)](http://packagist.org/packages/aretecode/planck-id)
+[![Latest Stable Version](https://poser.pugx.org/aretecode/planck-id/version)](http://packagist.org/packages/aretecode/planck-id)
 ![shrinking](http://jonlieffmd.com/wp-content/uploads/2012/01/512px-Scale_one_to_thousand_volume.svg_3.png)
 
 ## What is it?
@@ -61,5 +64,3 @@ Either
 (_these tests use a snippet from thegrids website_)
 
 ## [Todos](https://github.com/aretecode/planck-id/TODO.md)
-
-[![Build Status](https://secure.travis-ci.org/aretecode/planck-id.svg)](https://travis-ci.org/aretecode/planck-id)]
