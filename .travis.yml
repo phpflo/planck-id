@@ -13,7 +13,7 @@ php:
 #  - chmod 777 ./bin/floidentity/test                    # set permission
 
 before_install:
-    - pip install codecov
+    - pip install --user codecov
 
 before_script:
   - wget http://getcomposer.org/composer.phar 
