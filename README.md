@@ -1,4 +1,4 @@
-#PlanckId V0.7.81
+#PlanckId V0.7.82
 ![shrinking](http://jonlieffmd.com/wp-content/uploads/2012/01/512px-Scale_one_to_thousand_volume.svg_3.png)
 
 ## What is it?
@@ -12,8 +12,7 @@ Turns this:
 </a>
 <style>.pull-right, .btn, .btn-primary, .btn-github, .icon-github {}</style>
 <style>.btn{}</style>
-<script>var githubButtons = document.getElementsByClassName('btn-github');
-</script>
+<script>var githubButtons = document.getElementsByClassName('btn-github');</script>
 <script>githubIconButtons = $('.icon-github');</script>
 ```
 Into this: 
@@ -23,8 +22,8 @@ Into this:
 </a> 
 <style>.c, .e, .a, .d, .b {}</style>
 <style>.e{}</style> 
-<script>var githubButtons = document.getElementsByClassName('d');
-</script><script>githubIconButtons = $('.b');</script>
+<script>var githubButtons = document.getElementsByClassName('d');</script>
+<script>githubIconButtons = $('.b');</script>
 ```
 
 ## Graphs
@@ -46,17 +45,18 @@ $ php composer.phar install
 
 ## Use
 Either
-1) Open command line and change directories to `your-project/PlanckId`, then run `php index.php YourFileNameHere`
-2) Navigate your browser to `your-project/PlanckId/index.php?filename=yourFullFileUrl` or `your-project/PlanckId/index.php?content=allOfYourContentHere`
+1. Open command line and change directories to `your-project/PlanckId`, then run `php index.php YourFileNameHere`
+2. Navigate your browser to `your-project/PlanckId/index.php?filename=yourFullFileUrl` or `your-project/PlanckId/index.php?content=allOfYourContentHere`
 
 ## Terminology
 * _Planck_: ([Planck length](https://en.wikipedia.org/wiki/Planck_length), in principle, the shortest measurable length.) an instance of the shortest available valid class/id/selector. 
 * _Original_: the _class/id/selector_ before it was turned into a Planck. (I'm open to changing this, feel free to suggest a new term.)
 
 ## Running tests
-1) Run in the browser by navigating to `your-project/PlanckId/tests/Run.php`
-2) Run via the command line by changing your directory to  `PlanckId/bin`
-3) Run through the command line by going to `PlanckId` and running `phpunit`
+1. Run in the browser by navigating to `your-project/PlanckId/tests/Run.php`
+2. Run via the command line by changing your directory to  `PlanckId/bin`
+3. Run through the command line by going to `PlanckId` and running `phpunit`
+
 (_these tests use a snippet from thegrids website_)
 
 ## [Todos](https://github.com/aretecode/PlanckId/TODO.md)

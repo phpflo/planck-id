@@ -1,7 +1,7 @@
 {
     "name": "aretecode/PlanckId",
     "type": "library",
-    "version": "0.7.81",
+    "version": "0.7.82",
     "description": "Minifies (almost) all HTML ids + classes, & CSS + JS selectors",
     "keywords": ["minify", "shrink", "optimize", "selector", "css", "js", "html", "planck", "planckid"],
     "homepage": "https://github.com/aretecode/PlanckId",
