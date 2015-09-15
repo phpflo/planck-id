@@ -32,9 +32,6 @@ class FloComponent extends Component {
         if ($portTypeMethod !== 'inPorts' && $portTypeMethod !== 'outPorts') 
             return;
 
-        echo $portTypeMethod;
-        echo $portSubType;
-
         // able to be used in debugging
         Emitter::emit('flocomponent.addingPort', ['class' => Static::class, $port]);
 
