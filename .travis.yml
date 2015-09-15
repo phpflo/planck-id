@@ -2,7 +2,7 @@ language: php
 
 php:
   - 5.6
-#  - 7.0
+  - 7.0
 #  - hhvm
 
 #matrix:
@@ -16,4 +16,5 @@ before_script:
   - chmod 777 ./bin/floidentity/test                    # set permission
 
 script: 
-  - ./bin/behat # --config ./bin/planckid  # run behat
+# - ./bin/behat # --config ./bin/planckid  # run behat  
+  - phpunit
