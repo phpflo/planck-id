@@ -1,7 +1,8 @@
 #PlanckId (planck-id)
 [![Build Status](https://secure.travis-ci.org/aretecode/planck-id.svg)](https://travis-ci.org/aretecode/planck-id)
 [![License](https://poser.pugx.org/aretecode/planck-id/license)](http://packagist.org/packages/aretecode/planck-id)
-[![Latest Stable Version](https://poser.pugx.org/aretecode/planck-id/version)](http://packagist.org/packages/aretecode/planck-id)
+[![Latest Stable Version](https://poser.pugx.org/aretecode/planck-id/v/unstable)](http://packagist.org/packages/aretecode/planck-id)
+[![Latest Unstable Version](https://poser.pugx.org/aretecode/planck-id/version)](http://packagist.org/packages/aretecode/planck-id)
 ![shrinking](http://jonlieffmd.com/wp-content/uploads/2012/01/512px-Scale_one_to_thousand_volume.svg_3.png)
 
 ## What is it?
