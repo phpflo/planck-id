@@ -8,9 +8,6 @@ php:
 before_install:
   - pip install --user codecov
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
 before_script:
   - wget http://getcomposer.org/composer.phar 
   - php composer.phar self-update
@@ -18,3 +15,6 @@ before_script:
 
 script: 
   - phpunit
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
