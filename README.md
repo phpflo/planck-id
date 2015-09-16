@@ -60,7 +60,7 @@ Either
 
 ## Running tests
 1. Run in the browser by navigating to `your-project/planck-id/tests/Run.php`
-2. Run via the command line by changing your directory to  `planck-id/bin`
+2. Run via the command line by changing your directory to  `planck-id/bin` and then running `behat`
 3. Run through the command line by going to `planck-id` and running `phpunit`
 
 (_these tests use a snippet from thegrids website_)
