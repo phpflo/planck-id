@@ -5,13 +5,6 @@ php:
   - 7.0
 #  - hhvm
 
-#matrix:
-#  allow_failures:
-#    - php: 7.0
-#  fast_finish: true
-# - ./bin/behat # --config ./bin/planckid  # run behat  
-#  - chmod 777 ./bin/floidentity/test                    # set permission
-
 before_install:
     - pip install --user codecov
 
@@ -24,5 +17,4 @@ script:
   - phpunit
 
 after_success:
-  #- codecov
   - bash <(curl -s https://codecov.io/bash)
