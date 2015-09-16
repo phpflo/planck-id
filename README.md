@@ -3,7 +3,7 @@
 [![License](https://poser.pugx.org/aretecode/planck-id/license)](http://packagist.org/packages/aretecode/planck-id)
 [![Latest Stable Version](https://poser.pugx.org/aretecode/planck-id/v/unstable)](http://packagist.org/packages/aretecode/planck-id)
 [![Latest Unstable Version](https://poser.pugx.org/aretecode/planck-id/version)](http://packagist.org/packages/aretecode/planck-id)
-[![Codacy Badge](https://api.codacy.com/project/badge/6ea69f611cb84c63862b2750a5e48563)][http://www.codacy.com/app/aretecode/planck-id]
+[![Codacy Badge](https://api.codacy.com/project/badge/6ea69f611cb84c63862b2750a5e48563)](http://www.codacy.com/app/aretecode/planck-id)
 ![shrinking](http://jonlieffmd.com/wp-content/uploads/2012/01/512px-Scale_one_to_thousand_volume.svg_3.png)
 
 ## What is it?
