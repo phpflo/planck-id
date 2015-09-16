@@ -37,8 +37,10 @@ Put the .json files from [planck-id/graphs](http://github.com/aretecode/planck-i
 ## Installation
 It can be installed from [Packagist](https://packagist.org/planck-id) using [Composer](https://getcomposer.org/). Make sure your `composer.json` contains:
 ```json
-require {
-    "aretecode/planck-id"
+{
+    require {
+        "aretecode/planck-id"
+    }
 }
 ```
 

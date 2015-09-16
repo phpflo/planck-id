@@ -2,16 +2,16 @@
 
 namespace PlanckId\Flo;
 
+use InvalidArgumentException;
 use PhpFlo\Component;
 use PhpFlo\Port;
 use PhpFlo\ArrayPort;
-use InvalidArgumentException;
 use PlanckId\Emitter;
 
 /**
  * Extension to the Component adding the ability to create components without unessecary duplication
  */
-class FloComponent extends Component {
+abstract class FloComponent extends Component {
   
     /**
      * @example
