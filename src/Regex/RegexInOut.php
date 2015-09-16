@@ -41,7 +41,7 @@ class RegexInOut extends FloComponent
         if (is_array($matches) && count($matches) === 0 && $this->outPorts['err']->isConnected()) 
             $this->outPorts['err']->send($matches);
 
-        Emitter::emit('regex.inout', $matches, Static::class);
+        Emitter::emit('regex.inout', $matches, static::class);
 
         return $matches;
     }
@@ -52,7 +52,7 @@ class RegexInOut extends FloComponent
      * @return void
      */
     public function outs($data) {
-        lineOut(__CLASS__ . ".> " .Static::class . " " . __METHOD__);
+        lineOut(__CLASS__ . ".> " .static::class . " " . __METHOD__);
         $dataOut = $this->get($data);
 
         $this->outPorts['out']->send($dataOut);

@@ -33,7 +33,7 @@ class FloComponent extends Component {
             return;
 
         // able to be used in debugging
-        Emitter::emit('flocomponent.addingPort', ['class' => Static::class, $port]);
+        Emitter::emit('flocomponent.addingPort', ['class' => static::class, $port]);
 
         // example `$this->inPorts['delimiter'] = new Port`
         if (isset($port[2])) 

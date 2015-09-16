@@ -37,7 +37,7 @@ class StyleRegexRepeater extends FloComponent {
         $this->outPorts['identities']->send($data);
     }    
 
-    public function outs($data) {             
+    public function outs() {             
         lineOut(__METHOD__);
         $this->outPorts['classes']->disconnect();
         $this->outPorts['identities']->disconnect();

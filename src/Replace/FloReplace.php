@@ -69,7 +69,7 @@ class FloReplace extends FloComponent
         $this->identities = $identities;
     }
     public function setContent($content) {
-        lineOut(Static::class . " " . __METHOD__);
+        lineOut(static::class . " " . __METHOD__);
         $this->content = $content;
     }
     

@@ -10,7 +10,7 @@ use PlanckId\Planck\OriginalAndPlanckMap;
  */
 class ReadOriginalAndPlanckMap extends InvokableFloComponent {
     protected $ports = array('in', 'out');
-    public function __invoke($identityArray) {
+    public function __invoke($identityArray = null) {
         $this->outPorts['out']->send(OriginalAndPlanckMap::$newIdentities);
     }
 }

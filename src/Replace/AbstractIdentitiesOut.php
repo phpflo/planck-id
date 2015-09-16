@@ -33,7 +33,7 @@ abstract class AbstractIdentitiesOut extends FloComponent {
     }    
 
     public function setContent($content) {
-        lineOut(Static::class . " " . __METHOD__);
+        lineOut(static::class . " " . __METHOD__);
         $this->content = $content;
     }
 }

@@ -20,9 +20,8 @@ class OriginalsToPlancks extends InvokableFloComponent {
         $this->inPorts['in']->on('disconnect', [$this, 'outs']);
     }
 
-    public function outs($data) {
+    public function outs() {
         lineOut(__METHOD__);
-        
         $this->outPorts['out']->disconnect();
     }
  

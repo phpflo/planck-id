@@ -16,7 +16,7 @@ abstract class InvokableFloComponent extends FloComponent {
         $this->inPorts['in']->on(
             'data', 
             function($data) { 
-                return Static::__invoke($data); 
+                return static::__invoke($data); 
             }
         );
     }

@@ -88,19 +88,6 @@ function isAssociativeArray(array $array) {
 }
 
 /**
- * @param  array|mixed $array 
- * @param  array       $out 
- * @return void
- */
-function imploded($array, $out = null) {
-    if (is_array($array)) 
-        $imploded = implode(',', $array);
-    else
-        $imploded = $array;
-
-    out($out, $imploded);
-}
-/**
  * @example
  *      input   [0 => 'cat', 1 => 'dog'], [0 => 'foo', 1 => 'bar']
  *      return  [0 => 'cat', 1 => 'dog', 2 => 'foo', 3 => 'bar']
@@ -112,34 +99,7 @@ function imploded($array, $out = null) {
 function mergeArrayValues($array1, $array2) {
     return array_merge(array_values($array1), array_values($array2));
 }
-/**
- * [ ] add call_user_func_array, this was just for functions with an array @param
- * 
- * pass in a callable and the stuff you want to pass into it
- * if it is not an array, make it one
- * 
- * @example
- *    
- * 
- * @param  Callable|string $callable 
- * @param  array|mixed     $content  
- * @return void
- */
-function out(Callable $callable, $content) {
-    if (!is_string($callable) && !is_callable($callable) || is_array($callable)) {
-        lineOut(["out callable", $callable, "out callable content", $content]);
-        throw new InvalidArgumentException("argument was a not a valid argumet, must be a callable|string : " . var_export($callable, true));
-    }
 
-    if (!is_array($content))
-        $content = array($content);
-
-    if (is_callable($callable)) 
-        return $callable($content);
-
-    if (is_string($callable) && function_exists($callable)) 
-        return $callable($content);
-}
 /**
  * Convenience method for one line preg match
  * 
@@ -148,7 +108,7 @@ function out(Callable $callable, $content) {
  * @return array
  */
 function pregMatchAll($x, $regex) {
-    $match = preg_match_all($regex, $x, $matches);
+    preg_match_all($regex, $x, $matches);
     return $matches;
 }
 /**
@@ -183,38 +143,4 @@ function removeEmptyArrays(&$array = array()) {
             unset($array[$key]);
 
     return $array;
-}
-
-/**
- * @param  array         $array 
- * @param  callable      $out  
- * @return void       
- */
-function flattenUniqueOut($out, $array) {
-    $flatArray = Arr::flatten($array);    
-    $uniqueArray = array_unique($flatArray);
-    out($out, $uniqueArray);
-}
-
-/**
- * @param  array         $array 
- * @param  callable      $out  
- * @return void       
- */
-function flattenOut($out, $array) {
-    $flatArray = Arr::flatten($array);    
-    out($out, $flatArray);
-}
-
-
-// DOING SOME RETURNING, MAYBE THERE IS A BETTER WAY IF THE IDENTITIES ARE STATEFUL ?
-///////////////////////////////////////
-
-/**
- * @param  array         $array 
- * @return array       
- */
-function flattenUnique($array) {
-    $flatArray = Arr::flatten($array);    
-    return $uniqueArray = array_unique($flatArray);
 }

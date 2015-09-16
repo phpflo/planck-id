@@ -118,7 +118,7 @@ trait FeatureSelectors {
 
     /** @When /^I extract originals without context$/ */
     public function iExtractOriginalsWithoutContext() {
-      $this->graph->addEdges(array(    
+        $this->graph->addEdges(array(    
             ### 
               ["ReadRepeater", "style", "Style", "in"],
               ["ReadRepeater", "markup", "Markup", "in"],
@@ -419,13 +419,13 @@ trait SetUpGraph {
         $this->graph->addNode("StringToArray",                  "PlanckId\Utilities\StringToArray");
         $this->graph->addNode("ArrayToString",                  "PlanckId\Utilities\ArrayToString");
         
-
         $this->setGraphEdgeToMinify();
 
         lineOut($this->graph->toJSON());
 
+        // $network 
         // Make the graph "live"
-        $network = PhpFlo\Network::create($this->graph);
+        PhpFlo\Network::create($this->graph);
     }
 
     public function setContentAsOutput() {
