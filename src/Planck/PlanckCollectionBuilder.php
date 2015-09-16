@@ -37,9 +37,9 @@ class PlanckCollectionBuilder {
         $values = mergeArrayValues($values, $this->singleLetter());
         $values = mergeArrayValues($values, $this->letterLetter());
         $values = mergeArrayValues($values, $this->letterNumber());
-        // $values = mergeArrayValues($values, $this->letterNumberLetter());
-        // $values = mergeArrayValues($values, $this->letterNumberNumber());
-        // $values = mergeArrayValues($values, $this->letterLetterLetter());
+        $values = mergeArrayValues($values, $this->letterNumberLetter());
+        $values = mergeArrayValues($values, $this->letterNumberNumber());
+        $values = mergeArrayValues($values, $this->letterLetterLetter());
     
         return new PlanckCollectionIterator($values);
     }
@@ -97,7 +97,7 @@ class PlanckCollectionBuilder {
      */
     function appendNumbersToEach($arrayOfValues) {
         $arrayToReturn = array();
-        foreach ($arrayOfValues as $key => $value)  
+        foreach ($arrayOfValues as $value)  
             foreach ($this->singleNumber() as $number)           
                 $arrayToReturn[] = $value . $number;
         
@@ -115,7 +115,7 @@ class PlanckCollectionBuilder {
      */
     function appendLettersToEach($arrayOfValues) {
         $arrayToReturn = array();
-        foreach ($arrayOfValues as $key => $value) 
+        foreach ($arrayOfValues as $value) 
             foreach ($this->singleLetter() as $letter)          
                 $arrayToReturn[] = $value . $letter;
             

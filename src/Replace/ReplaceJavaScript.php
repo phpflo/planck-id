@@ -20,10 +20,10 @@ class ReplaceJavaScript extends AbstractNonMarkupPlanckOut
         $matchesCopy = [];
         $content = (string) $data['content'];
         foreach ($this->matches as $key => $match) {
-            $this->matchesCopy[$key] = (string) $match;
+            $matchesCopy[$key] = (string) $match;
             $replaced = str_replace($data['original'], $data['new'], $this->matches[$key]);
             $this->matches[$key] = $replaced;
-            $content = str_replace($this->matchesCopy[$key], $replaced, $content);     
+            $content = str_replace($matchesCopy[$key], $replaced, $content);     
             $data['content']->setContent($content);
             lineOut('replacing `'.$data['original'].'` with `'.$data['new'].'`');
         }

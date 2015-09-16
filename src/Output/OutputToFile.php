@@ -26,14 +26,14 @@ class OutputToFile extends FloComponent
      * @return void
      */
     public function output($data) {
+        lineOut(__METHOD__);
         if (!is_string($data)) 
             $data = var_export($data, true);
 
-        $fp = fopen($this->file, 'w+');
-        fwrite($fp, $data);
-        fclose($fp);
+        $fileHandler = fopen($this->file, 'w+');
+        fwrite($fileHandler, $data);
+        fclose($fileHandler);
 
-        lineOut(__METHOD__);
         // lineOut($data);
     }
 }

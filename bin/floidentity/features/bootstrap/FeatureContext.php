@@ -29,9 +29,9 @@ trait FeatureContents {
     /** @When /^I put that into a file named "([^"]*)"$/ */
     public function thatGoesIntoAFileNamed($fileName) {
         $this->testFileName = $fileName;
-        $fp = fopen($this->testFileName, 'w+');
-        fwrite($fp, $this->content);
-        fclose($fp);       
+        $fileHandler = fopen($this->testFileName, 'w+');
+        fwrite($fileHandler, $this->content);
+        fclose($fileHandler);       
         return $this;
     }
 

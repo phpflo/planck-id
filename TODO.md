@@ -2,30 +2,29 @@
 
 ### general
 * [ ] upload the functional version
-* [ ] upload the FBP version
+* [x] upload the FBP version
 * [x] fix sortby
 * [ ] improve sortby in order to assign the smallest PlanckId to the most used Originals
 * [ ] change the value objects and iterator to more functional
 * [x] have breakpoints for testing 
 * [x] write README.md
 * [ ] format the Flo a little better 
-* [ ] put networks json into the corresponding files
+* [x] put networks json into the corresponding files
 * [ ] put the json into NoFlo for graphs
 * [ ] full Documentation
 * [x] separate into files
-* [ ] format the output: 1) Input 2) Output 3) Keys used (Original + new/minified/PlanckId
-* [ ] output the formatted output only once, at the end
-* [ ]
+* [x] format the output: 1) Input 2) Output 3) Keys used (Original + new/minified/PlanckId
+* [x] output the formatted output only once, at the end
 * [x] fix debug connection
 * [x] change some of the terms using `Identities` into `Plancks` & `Originals`
-* [ ] remove unnessecary comments
+* [x] remove unnessecary comments
 * [ ] should put Realm as its own lib
 * [ ] should put utilities in its own support library
 * [ ] autoload the Components
-* [ ] put on packagist
+* [x] put on packagist
 * [ ] automatically scale the creation of the PlanckCollectionBuilder
-* [ ] !!! enable the full range of PlanckBuilder in the meantime
-* [ ] svgs for github project
+* [x] enable the full range of PlanckBuilder in the meantime
+* [x] svg badges for github project
 
 ### testing
 * [x] ~write it BDD 
@@ -36,8 +35,8 @@
 * [x] separate tests into different .features
 * [x] make the tests all pass
 * [x] put the tests into bdd .feature
-* [ ] ~integrate travis
-* [ ] if travis does not run bdd easily, run with PHPUnit
+* [x] integrate travis
+* [x] if travis does not run bdd easily, run with PHPUnit
 * [ ] in the tests, make sure it works WITHOUT inline scripts or styles
 * [ ] test and revise for 500+ ids, remove the unique part for testing?
 * [ ] extend PHPFlo tests for my extensions

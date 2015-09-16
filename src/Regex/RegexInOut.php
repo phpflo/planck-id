@@ -30,11 +30,11 @@ class RegexInOut extends FloComponent
      * @return array matches 
      */
     protected function get($data) {
-        $d = $data;
+        $dataExtended = $data;
         if (is_array($data)) 
-            $d = implode(" ", $data);
+            $dataExtended = implode(" ", $data);
 
-        $matches = pregMatchAll($d, $this->regex);        
+        $matches = pregMatchAll($dataExtended, $this->regex);        
         if (is_array($matches)) 
             $matches = Arr::flatten($matches);
 

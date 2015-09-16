@@ -65,4 +65,4 @@ Either
 
 (_these tests use a snippet from thegrids website_)
 
-## [Todos](https://github.com/aretecode/planck-id/TODO.md)
+## [Todos](https://github.com/aretecode/planck-id/blob/master/TODO.md)
