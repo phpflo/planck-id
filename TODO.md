@@ -26,7 +26,12 @@
 * [x] enable the full range of PlanckBuilder in the meantime
 * [x] svg badges for github project
 * [ ] upgrade the Planck to use more UPPERCASE letters
+
+(thanks Bad_Advice_Cat for these next 4)
 * [ ] flush out the index.php page, remove $_REQUEST use
+* [ ] change OutputFinal to emitt an event so the Client can register their own listener to deal with the output
+* [ ] put the OutputFinal output as a value object, possibly attaching the correct Component for outputting in different formats (json, html) and on different systems (cli, browser) 
+* [ ] fully implement debugging on/off
 
 ### testing
 * [x] ~write it BDD 
@@ -48,7 +53,10 @@
 Scenario: Extract and Minify Markup and Style Selectors from Contents using Filter
 * [ ] test with Styles, but no Scripts. Test with Scripts, but no Styles. Test with Styles & Scripts, but no other Markup.
 * [ ] test to show ensure that longest is first for the sorting originals
-* [ ] 
+
+(thanks simensen)
+* [x] move behat to require-dev
+* [x] put bin/ test files in .gitignore
 
 ### js
 * [x] JavaScript v0.1

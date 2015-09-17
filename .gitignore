@@ -1,2 +1,8 @@
 vendor
 composer.lock
+bin/behat
+bin/behat.bat
+bin/doctrine-dbal
+bin/doctrine-dbal.bat
+bin/phpunit
+bin/phpunit.bat

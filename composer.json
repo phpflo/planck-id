@@ -14,13 +14,13 @@
     "minimum-stability": "dev",
     "require": {
         "phpflo/phpflo": "dev-master",
-        "behat/behat": "~2.5",
         "league/event": "*",
         "monolog/monolog": "1.*",
         "illuminate/support": "dev-master",
         "symfony/var-dumper": "3.0.*"
     },
     "require-dev": {
+        "behat/behat": "~2.5",
         "phpunit/phpunit": "dev-master"
     },
     "config": {
