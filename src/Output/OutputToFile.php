@@ -9,7 +9,7 @@ class OutputToFile extends FloComponent
     protected $file = 'output.php';
 
     public function __construct() {
-        $this->addPorts([['in', 'in', array()], ['in', 'file', array()], 'err', 'out']);
+        $this->addPorts([['in', 'in', array()], ['in', 'file', array()], ['out', 'error'], 'out']);
         $this->onIn('file', 'data', 'setFile');
         $this->onIn('in', 'data', 'output');
     }       

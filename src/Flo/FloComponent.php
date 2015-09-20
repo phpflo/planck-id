@@ -37,15 +37,15 @@ abstract class FloComponent extends Component {
 
         // example `$this->inPorts['delimiter'] = new Port`
         if (isset($port[2])) 
-            $this->{$portTypeMethod}[$portSubType] = new ArrayPort();
+            $this->{$portTypeMethod}[$portSubType] = new ExtendedFloArrayPort();
         else 
-            $this->{$portTypeMethod}[$portSubType] = new Port();
+            $this->{$portTypeMethod}[$portSubType] = new ExtendedFloPort();
     }
 
     private function errorTest($portType) {
-        if (!containsSubString($portType, 'in') && !containsSubString($portType, 'out') && !containsSubString($portType, 'err')) 
-            if (isset($this->outPorts['err']) && $this->outPorts['err']->isConnected()) 
-                $this->outPorts['err']->send('did not contain in or out! instead it was: `' . $portType . '`; ');
+        if (!containsSubString($portType, 'in') && !containsSubString($portType, 'out') && !containsSubString($portType, 'error')) 
+            if (isset($this->outPorts['error']) && $this->outPorts['error']->isAttached()) 
+                $this->outPorts['error']->send('did not contain in or out! instead it was: `' . $portType . '`; ');
     }
 
     /**
@@ -110,5 +110,105 @@ abstract class FloComponent extends Component {
      */
     protected function onIn($name, $event, $listener) {
         $this->inPorts[$name]->on($event, array($this, $listener));
+    }      
+
+    /**
+     * shorthand usage of sending through multiple out ports
+     * @param  array  $names 
+     * @param  mixed  $data 
+     * @param  bool   $ifAttached 
+     * @param  int|bool   $arrayPort to send out to all connected
+     * @return bool
+     */
+    protected function sendAll($names = array(), $data, $ifAttached = true, $arrayPort = true) {
+        foreach ($names as $name) 
+            $this->sendOut($name, $data, $ifAttached, $arrayPort);
+    }      
+
+    /**
+     * @see    ::sendAll() 
+     * @see    ::sendThenDisconnect()
+     * @param  array      $names 
+     * @param  mixed      $data 
+     * @param  bool       $ifAttached 
+     * @param  int|bool   $arrayPort to send out to all connected
+     * @return bool
+     */
+    protected function sendThenDisconnectAll($names = array(), $data, $ifAttached = true, $arrayPort = true) {
+        foreach ($names as $name) {
+            $this->sendOut($name, $data, $ifAttached, $arrayPort);
+            $this->disconnectIfAttached($name);
+        }
+    }        
+
+    /**
+     * shorthand usage of sending then disconnecting
+     * could method extract sending to both send and disconnect
+     * @param  array      $names 
+     * @param  mixed      $data 
+     * @param  bool       $ifAttached 
+     * @param  int|bool   $arrayPort  to send out to all connected
+     * @return bool
+     */
+    protected function sendThenDisconnect($name, $data, $ifAttached = true, $arrayPort = true) {
+        $this->sendOut($name, $data, $ifAttached, $arrayPort);
+        return $this->disconnectIfAttached($name);
+    }   
+
+    /**
+     * shorthand usage of sending out if it's attached
+     * @param  string     $name   
+     * @param  mixed      $data 
+     * @param  int|bool   $arrayPort 
+     * @return bool
+     */
+    protected function sendIfAttached($name, $data, $arrayPort = true) {
+        if ($this->outPorts[$name]->isAttached()) 
+            return $this->sendOutOrOutAll($name, $data, $arrayPort);
+        return false;
+    }    
+
+    /**
+     * shorthand usage of disconnecting out if it's attached
+     * @param  string $name   
+     * @param  mixed  $data 
+     * @return bool
+     */
+    protected function disconnectIfAttached($name) {
+        if ($this->outPorts[$name]->isAttached()) {
+            $this->outPorts[$name]->disconnect();
+            return true;
+        }
+        return false;
+    }    
+
+    /**
+     * @param  array      $names 
+     * @param  mixed      $data 
+     * @param  bool       $ifAttached 
+     * @param  int|bool   $arrayPort 
+     * @return bool
+     */
+    protected function sendOut($name, $data, $ifAttached = true, $arrayPort = true) {
+        if ($ifAttached) 
+            return $this->sendIfAttached($name, $data, $arrayPort);
+        if ($arrayPort) 
+            return $this->sendOutOrOutAll($name, $data, $arrayPort);
+
+        $this->outPorts[$name]->send($data);
+        return false;
+    }  
+
+    /**
+     * @param  array      $names 
+     * @param  mixed      $data 
+     * @param  bool       $ifAttached 
+     */
+    protected function sendOutOrOutAll($name, $data, $arrayPort = true) {
+        if ($arrayPort) 
+            if (method_exists($this->outPorts[$name], 'sendAll'))
+                return $this->outPorts[$name]->sendAll($data);
+        
+        return $this->outPorts[$name]->send($data);
     }        
 }

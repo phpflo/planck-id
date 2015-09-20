@@ -9,7 +9,7 @@ class ArrayToString extends FloComponent
     protected $delimiter = ',';
 
     public function __construct() {
-        $this->addPorts([['in', 'in', array()], ['in', 'delimiter', array()], 'err', 'out']);
+        $this->addPorts([['in', 'in', array()], ['in', 'delimiter', array()], ['out', 'error'], 'out']);
         $this->onIn('delimiter', 'data', 'setDelimiter');
         $this->onIn('in', 'data', 'output');        
     }    
@@ -31,8 +31,8 @@ class ArrayToString extends FloComponent
         if (is_array($data) || $data instanceof \Transversable) 
             $data = implode($this->delimiter, $data);
        
-        lineOut($data);
-
+        // lineOut($data);
+        
         $this->outPorts['out']->send($data);
         $this->outPorts['out']->disconnect();
     }

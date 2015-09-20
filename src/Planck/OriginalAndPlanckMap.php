@@ -4,24 +4,29 @@ namespace PlanckId\Planck;
 
 /**
  * was IdentityRegistry
+ * had $newIdentities
+ * 
  * could be done another way 
  */
 class OriginalAndPlanckMap {
-    public static $newIdentities = [];
+    /**
+     * @var array<string#original, string#planck>
+     */
+    public static $map = [];
 
-    public static function has($originalIdentity) { 
-        return isset(self::$newIdentities[$originalIdentity]);
+    public static function has($original) { 
+        return isset(self::$map[$original]);
     }
 
     public static function set($key, $value) {
-        self::$newIdentities[$key] = $value; 
+        self::$map[$key] = $value; 
     }
 
     public static function sortByLength() {
-        self::$newIdentities = sortByKeyLength(self::$newIdentities);        
+        self::$map = sortByKeyLength(self::$map);        
     }
 
     public static function reset() {
-        self::$newIdentities = []; 
+        self::$map = []; 
     }
 }

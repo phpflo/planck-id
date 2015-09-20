@@ -26,6 +26,12 @@
 * [x] enable the full range of PlanckBuilder in the meantime
 * [x] svg badges for github project
 * [ ] upgrade the Planck to use more UPPERCASE letters
+* [ ] add Inflector on the FloComponent to make an out and in port automatically on connect and disconnect (example: `function onOutExamplePortName()` and `function onInExamplePortName` and `function onExamplePortDisconnect()`
+* [ ] move ReadRepeater, ReadRepeaterFinal, StyleRegexRepeater to /Core/
+* [x] create Extract Component
+* [ ] remove need for ReadRepeater and use Extract, 
+* [ ] add a .dev/non-minified version of the contents and link to it in the comments
+* [ ] change FloReplace using `identities` in port to `map`
 
 (thanks Bad_Advice_Cat for these next 4)
 * [ ] flush out the index.php page, remove $_REQUEST use
@@ -53,6 +59,12 @@
 Scenario: Extract and Minify Markup and Style Selectors from Contents using Filter
 * [ ] test with Styles, but no Scripts. Test with Scripts, but no Styles. Test with Styles & Scripts, but no other Markup.
 * [ ] test to show ensure that longest is first for the sorting originals
+* [x] gzip comparison
+* [x] create Flo/ExtendedFloNetwork
+* [ ] DI in Flo/ExtendedFloNetwork
+* [x] create Flo/ExtendedFloPort & Flo/ExtendedFloArrayPort to use ::isAttached
+* [ ] test ^
+* [ ] ask about whether it should use ::isAttached, or if it should create multiple Components
 
 (thanks simensen)
 * [x] move behat to require-dev
@@ -91,7 +103,7 @@ Scenario: Extract and Minify Markup and Style Selectors from Contents using Filt
 * [x] Style extracting 
 * [x] Style matching block
 * [x] Style replacing block 
-* [ ] Style matching External (href=) Component
+* [x] Style matching External (href=) Component
 * [ ] testing ^ 
 * [ ] Style Reading External File
 * [ ] Style testing ^
@@ -104,6 +116,7 @@ Scenario: Extract and Minify Markup and Style Selectors from Contents using Filt
 * [x] selector regex match - not followed by anything except specific characters, for example, it was matching .5 in background-color(0.5)
 * [ ] #[keyword-todo] doesn't account for keywords & `content`
 * [ ] add client defined keywords & client defined blacklisted Originals.
+* [ ] add files, blacklist and whitelist other files
 * [ ] be able to pass in website urls
 * [ ] be able to download a zip from the processed website url
 * [ ] use FlySystem for files

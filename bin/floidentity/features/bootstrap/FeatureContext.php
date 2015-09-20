@@ -15,6 +15,223 @@ use PlanckId\Flo\ExtendedFloGraph;
 #should do in the .yml
 require_once __DIR__.'/../../../../bootstrap.php';
 
+trait FeatureOnlyExtract {
+    function onlyExtract() {
+        $this->graph->addEdges(array(    
+            # ["ExtractAndReplace", "extract", "ExtractOriginals", "in"],
+            # ["ExtractAndReplace", "replace", "FloReplace", "content"],
+
+                ["ExtractOriginals", "style", "Style", "in"],
+                ["ExtractOriginals", "markup", "Markup", "in"],
+                # ["ExtractOriginals", "script", "Script", "in"],
+
+            ##################################################### EXTRACT
+            #Markup
+                ["Markup", "identities", "MarkupIdentitiesRegex", "in"],
+                  ["MarkupIdentitiesRegex", "out", "AddOriginals", "in"],
+
+                ["Markup", "classes", "MarkupClassesRegex", "in"],
+                    ["MarkupClassesRegex", "out", "MarkupClassesFromMatchedRegex", "in"],
+                      ["MarkupClassesFromMatchedRegex", "out", "AddOriginals", "in"],
+
+            #Style 
+                ["Style", "styleblocks", "StyleBlocksRegex_Match", "in"],
+                    ["StyleBlocksRegex_Match", "out", "StyleRegexRepeater", "styleblocks"],
+
+                #    
+                ["StyleRegexRepeater", "identities", "StyleIdentitiesRegex_Match", "in"],
+                  ["StyleIdentitiesRegex_Match", "out", "AddOriginals", "in"],        
+
+                ["StyleRegexRepeater", "classes", "StyleClassesRegex_Match", "in"],
+                  ["StyleClassesRegex_Match", "out", "AddOriginals", "in"],
+
+            ##################################################### IMPORTANT TO BE DIFFERENT THAN OTHER TESTS, OR CHANGE EVERYWHERE
+            ["OriginalsToPlancks", "out", "ReadOriginalAndPlanckMap", "in"],
+            ["ReadOriginalAndPlanckMap", "out", "DisplayOutputForTesting", "in"],
+              ##### 
+              # ["WriteOriginalAndPlanckMap", "out", "DisplayOutputForTesting", "in"],
+                #["ReadOriginalAndPlanckMap", "out", "FloReplace", "identities"],               
+        ));   
+        $this->setGraphEdgeToUniqueMinify();
+        $this->graph->addInitial($this->content, "ExtractAndReplace", "in");
+    }     
+}
+
+/**
+ * using the legend, but also adding new ones 
+ */
+trait FeatureExtractAndReplaceFromOriginalToPlanckMap {}
+
+trait FeatureExtractUsingExistingMap {
+    function extractUsingExistingMap() {}
+}
+/** 
+ * using Key/Legend
+ * replaceFromExistingOriginalToPlanckMap
+ */
+trait FeatureReplaceUsingExistingMap {
+    function replaceUsingExistingMap() {
+        $this->graph->addEdges(array(    
+            ["ContentAndMap", "content", "WriteContent", "in"],
+              ["WriteContent", "out", "ReadContent", "in"],
+                ["ReadContent", "out", "FloReplace", "content"],
+
+            ["ContentAndMap", "map", "WriteOriginalAndPlanckMap", "in"],
+              ["WriteOriginalAndPlanckMap", "out", "ReadOriginalAndPlanckMap", "in"],
+                ["ReadOriginalAndPlanckMap", "out", "FloReplace", "identities"],
+         
+            ##################################################### Replace
+              ["FloReplace", "contentout", "ReplaceMarkupIdentities", "content"],
+              ["FloReplace", "identitiesout", "ReplaceMarkupIdentities", "identities"], ##################
+                ["ReplaceMarkupIdentities", "out", "DisplayOutputForTesting", "in"],
+
+              ["FloReplace", "contentout", "ReplaceMarkupClasses", "content"],
+              ["FloReplace", "identitiesout", "ReplaceMarkupClasses", "identities"],
+                ["ReplaceMarkupClasses", "out", "DisplayOutputForTesting", "in"],
+            ###
+              
+            #ReplaceStyleBlockStyles<Replace>
+            ["FloReplace", "identitiesout", "ReplaceStyleSelectors", "identities"],
+            ["FloReplace", "contentout", "ReplaceStyleBlockStyles", "in"],
+              # ["StyleBlocksRegex", "out", "ReplaceStyleBlockStyles", "in"],
+                ["ReplaceStyleBlockStyles", "out", "DisplayOutputForTesting", "in"], # idk why?
+
+                ["ReplaceStyleBlockStyles", "regex", "StyleBlocksRegex_Replace", "in"],
+                  ["StyleBlocksRegex_Replace", "out", "ReplaceStyleSelectors", "match"],
+
+                #ReadContentForStyleBlocks<ReadContent>
+                ["ReplaceStyleBlockStyles", "content", "ReadContent_ForStyleBlocks", "in"],
+                  ["ReadContent_ForStyleBlocks", "out", "ReplaceStyleSelectors", "content"],
+                    // ["ReplaceStyleSelectors<ReadContent>", "writecontent", "WriteContent", "in"] // could do later if needed
+                ["ReplaceStyleSelectors", "out", "DisplayOutputForTesting", "in"],
+
+            # does the real replacing
+            ## ReplaceJavaScript 
+            # in an instanceof Replace, forwarding
+            ## ReplaceJavaScriptBlocks 
+            # in an instanceof ReadContent
+            ## ReadContentForJavaScriptBlocks 
+            # in an instanceof Regex for JS
+            ## JavaScriptRegex 
+            ["FloReplace", "identitiesout", "ReplaceJavaScript", "identities"],
+            ### [ ] should use a new JavaScriptRegex_Replace
+            ["FloReplace", "contentout", "ReplaceJavaScriptBlocks", "in"],
+
+                #ReadContentForJavaScriptBlocks<ReadContent>
+                ["ReplaceJavaScriptBlocks", "content", "ReadContent_ForJavaScriptBlocks", "in"],
+                  ["ReadContent_ForJavaScriptBlocks", "out", "ReplaceJavaScript", "content"],
+
+                ["ReplaceJavaScriptBlocks", "regex", "JavaScriptRegex_Replace", "in"],
+                ["JavaScriptRegex_Replace", "out", "ReplaceJavaScript", "match"],
+              
+                # ["ReplaceJavaScript", "out", "ReadContent", "in"], 
+                # ["ReadContent", "out", "TestingOutput", "in"], 
+                ["ReplaceJavaScript", "out", "DisplayOutputForTesting", "in"], 
+
+                #Final Step
+                ["ReplaceJavaScriptBlocks", "out", "TestingOutput", "in"], 
+        ));        
+        
+        $map = [
+            "section-acebf433-a6ec-43f6-8166-55c8d129353a" => "a",
+            "post-simple-media-adjacent-left-8-media" => "b",
+            "media-adjacent" => "c",
+            "post-simple" => "d",
+            "left" => "e",
+            "else" => "f",];
+
+        $this->setGraphEdgeToUniqueMinify();
+        $this->graph->addInitial(['content' => $this->content, 'map' => $map], "ContentAndMap", "in");
+    }
+}
+
+
+trait ReplaceGraphEdges {
+    function setUpReplaceGraphEdges() {
+        $this->graph->addEdges(array(    
+            ##################################################### Replace
+              ["FloReplace", "contentout", "ReplaceMarkupIdentities", "content"],
+              ["FloReplace", "identitiesout", "ReplaceMarkupIdentities", "identities"], ##################
+                ["ReplaceMarkupIdentities", "out", "DisplayOutputForTesting", "in"],
+
+              ["FloReplace", "contentout", "ReplaceMarkupClasses", "content"],
+              ["FloReplace", "identitiesout", "ReplaceMarkupClasses", "identities"],
+                ["ReplaceMarkupClasses", "out", "DisplayOutputForTesting", "in"],
+            ###
+              
+            #ReplaceStyleBlockStyles<Replace>
+            ["FloReplace", "identitiesout", "ReplaceStyleSelectors", "identities"],
+            ["FloReplace", "contentout", "ReplaceStyleBlockStyles", "in"],
+              # ["StyleBlocksRegex", "out", "ReplaceStyleBlockStyles", "in"],
+                ["ReplaceStyleBlockStyles", "out", "DisplayOutputForTesting", "in"], # idk why?
+
+                ["ReplaceStyleBlockStyles", "regex", "StyleBlocksRegex_Replace", "in"],
+                  ["StyleBlocksRegex_Replace", "out", "ReplaceStyleSelectors", "match"],
+
+                #ReadContentForStyleBlocks<ReadContent>
+                ["ReplaceStyleBlockStyles", "content", "ReadContent_ForStyleBlocks", "in"],
+                  ["ReadContent_ForStyleBlocks", "out", "ReplaceStyleSelectors", "content"],
+                    // ["ReplaceStyleSelectors<ReadContent>", "writecontent", "WriteContent", "in"] // could do later if needed
+                ["ReplaceStyleSelectors", "out", "DisplayOutputForTesting", "in"],
+
+            # does the real replacing
+            ## ReplaceJavaScript 
+            # in an instanceof Replace, forwarding
+            ## ReplaceJavaScriptBlocks 
+            # in an instanceof ReadContent
+            ## ReadContentForJavaScriptBlocks 
+            # in an instanceof Regex for JS
+            ## JavaScriptRegex 
+            ["FloReplace", "identitiesout", "ReplaceJavaScript", "identities"],
+            ### [ ] should use a new JavaScriptRegex_Replace
+            ["FloReplace", "contentout", "ReplaceJavaScriptBlocks", "in"],
+
+                #ReadContentForJavaScriptBlocks<ReadContent>
+                ["ReplaceJavaScriptBlocks", "content", "ReadContent_ForJavaScriptBlocks", "in"],
+                  ["ReadContent_ForJavaScriptBlocks", "out", "ReplaceJavaScript", "content"],
+
+                ["ReplaceJavaScriptBlocks", "regex", "JavaScriptRegex_Replace", "in"],
+                ["JavaScriptRegex_Replace", "out", "ReplaceJavaScript", "match"],
+              
+                # ["ReplaceJavaScript", "out", "ReadContent", "in"], 
+                # ["ReadContent", "out", "TestingOutput", "in"], 
+                ["ReplaceJavaScript", "out", "DisplayOutputForTesting", "in"], 
+
+                #Final Step
+                ["ReplaceJavaScriptBlocks", "out", "TestingOutput", "in"], 
+        ));        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 trait FeatureContents {
     /** @Given /^I have contents:$/ */
     public function iHaveContents(PyStringNode $content) {
@@ -254,18 +471,18 @@ trait FeatureExtractAndMinify {
 
             ["OriginalsToPlancks", "out", "FloReplace", "identities"],
             ##################################################### Replace
-              ["FloReplace", "contentout1", "ReplaceMarkupIdentities", "content"],
-              ["FloReplace", "identitiesout1", "ReplaceMarkupIdentities", "identities"], ##################
+              ["FloReplace", "contentout", "ReplaceMarkupIdentities", "content"],
+              ["FloReplace", "identitiesout", "ReplaceMarkupIdentities", "identities"], ##################
                 ["ReplaceMarkupIdentities", "out", "DisplayOutputForTesting", "in"],
 
-              ["FloReplace", "contentout2", "ReplaceMarkupClasses", "content"],
-              ["FloReplace", "identitiesout2", "ReplaceMarkupClasses", "identities"],
+              ["FloReplace", "contentout", "ReplaceMarkupClasses", "content"],
+              ["FloReplace", "identitiesout", "ReplaceMarkupClasses", "identities"],
                 ["ReplaceMarkupClasses", "out", "DisplayOutputForTesting", "in"],
             ###
               
             #ReplaceStyleBlockStyles<Replace>
-            ["FloReplace", "identitiesout3", "ReplaceStyleSelectors", "identities"],
-            ["FloReplace", "contentout3", "ReplaceStyleBlockStyles", "in"],
+            ["FloReplace", "identitiesout", "ReplaceStyleSelectors", "identities"],
+            ["FloReplace", "contentout", "ReplaceStyleBlockStyles", "in"],
               # ["StyleBlocksRegex", "out", "ReplaceStyleBlockStyles", "in"],
                 ["ReplaceStyleBlockStyles", "out", "DisplayOutputForTesting", "in"], # idk why?
 
@@ -286,9 +503,9 @@ trait FeatureExtractAndMinify {
             ## ReadContentForJavaScriptBlocks 
             # in an instanceof Regex for JS
             ## JavaScriptRegex 
-            ["FloReplace", "identitiesout4", "ReplaceJavaScript", "identities"],
+            ["FloReplace", "identitiesout", "ReplaceJavaScript", "identities"],
             ### [ ] should use a new JavaScriptRegex_Replace
-            ["FloReplace", "contentout4", "ReplaceJavaScriptBlocks", "in"],
+            ["FloReplace", "contentout", "ReplaceJavaScriptBlocks", "in"],
 
                 #ReadContentForJavaScriptBlocks<ReadContent>
                 ["ReplaceJavaScriptBlocks", "content", "ReadContent_ForJavaScriptBlocks", "in"],
@@ -386,8 +603,16 @@ trait SetUpGraph {
         $this->graph->addNode("AddOriginals",                   "PlanckId\Originals\AddOriginals");
         $this->graph->addNode("OriginalsToPlancks",             "PlanckId\Originals\OriginalsToPlancks");
 
-        $this->graph->addNode("RemoveUselessOriginals",        "PlanckId\Originals\RemoveUselessOriginals");
-        $this->graph->addNode("SortOriginalsByLength",         "PlanckId\Originals\SortOriginalsByLength");
+        $this->graph->addNode("RemoveUselessOriginals",         "PlanckId\Originals\RemoveUselessOriginals");
+        $this->graph->addNode("SortOriginalsByLength",          "PlanckId\Originals\SortOriginalsByLength");
+        $this->graph->addNode("ReadOriginalAndPlanckMap",       "PlanckId\Originals\ReadOriginalAndPlanckMap");
+        $this->graph->addNode("WriteOriginalAndPlanckMap",      "PlanckId\Originals\WriteOriginalAndPlanckMap");
+
+
+        $this->graph->addNode("ExtractOriginals",               "PlanckId\Core\ExtractOriginals");
+        $this->graph->addNode("ExtractAndReplace",              "PlanckId\Core\ExtractAndReplace");
+        $this->graph->addNode("ContentAndMap",                  "PlanckId\Core\ContentAndMap");
+
 
         $this->graph->addNode("FloReplace",                     "PlanckId\Replace\FloReplace");
         $this->graph->addNode("ReplaceStyleSelectors",          "PlanckId\Replace\ReplaceStyleSelectors");
@@ -408,6 +633,7 @@ trait SetUpGraph {
         $this->graph->addNode("ReadContent_ForStyleBlocks",     "PlanckId\Content\ReadContent");
         $this->graph->addNode("ReadContent_ForJavaScriptBlocks","PlanckId\Content\ReadContent");
         $this->graph->addNode("ReadContent",                    "PlanckId\Content\ReadContent");
+        $this->graph->addNode("WriteContent",                   "PlanckId\Content\WriteContent");
         $this->graph->addNode("WriteContent",                   "PlanckId\Content\WriteContent");
 
         $this->graph->addNode("StyleBlocksRegex_Replace",       "PlanckId\Regex\StyleBlocksRegex");
@@ -450,6 +676,15 @@ trait SetUpGraph {
             ["RemoveUselessOriginals", "out", "SortOriginalsByLength", "in"],            
             ["SortOriginalsByLength", "out", "OriginalsToPlancks", "in"],
         ));
+    }    
+
+    public function setGraphEdgeToUniqueMinify() {
+        $this->graph->addEdges(array(    
+            ["AddOriginals", "out", "RemoveUselessOriginals", "in"],
+            ["RemoveUselessOriginals", "out", "FlattenAndUniqueArray", "in"],            
+            ["FlattenAndUniqueArray", "out", "SortOriginalsByLength", "in"],            
+            ["SortOriginalsByLength", "out", "OriginalsToPlancks", "in"],
+        ));
     }
 }
 
@@ -461,6 +696,7 @@ trait SetUpGraph {
  */
 class FeatureContext extends BehatContext
 {
+    use FeatureOnlyExtract;
     use FeatureContents;
     use FeatureSelectors;
     use FeatureMarkupExtract;
@@ -470,6 +706,7 @@ class FeatureContext extends BehatContext
     use FeatureOriginalToPlanck;
     use FeatureExtractAndMinify;
     use SetUpGraph;
+    use FeatureReplaceUsingExistingMap;
 
     public $content;
     public $output;

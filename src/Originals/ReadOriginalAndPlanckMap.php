@@ -6,11 +6,12 @@ use PlanckId\Flo\InvokableFloComponent;
 use PlanckId\Planck\OriginalAndPlanckMap;
 
 /**
- *  was ReadIdentities
+ * was ReadIdentities
  */
 class ReadOriginalAndPlanckMap extends InvokableFloComponent {
     protected $ports = array('in', 'out');
-    public function __invoke($identityArray = null) {
-        $this->outPorts['out']->send(OriginalAndPlanckMap::$newIdentities);
+    public function __invoke($originalAndPlanckMap = null) {
+        lineOut(__METHOD__);
+        $this->sendThenDisconnect('out', OriginalAndPlanckMap::$map);
     }
 }

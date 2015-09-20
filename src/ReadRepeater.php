@@ -2,31 +2,31 @@
 
 namespace PlanckId;
 
-use PlanckId\Flo\FloComponent;
+use PlanckId\Flo\InvokableFloComponent;
 use PlanckId\Content\Content;
 
 /**
  *  From the File Read sending it out to Content, Style, Markup
  */
-class ReadRepeater extends FloComponent
+class ReadRepeater extends InvokableFloComponent
 {   
-    public function __construct() {
-        $this->addPorts(array(
-            ['in', 'in', array()], 
-            'err', 
-            ['out', 'style'], 
-            ['out', 'markup'], 
-            ['out', 'replace'], 
-            ['out', 'contentout'],
-            ['out', 'final'],
-        ));
+    protected $ports = array(
+        ['in', 'in', array()], 
+        ['out', 'error'],
+        ['out', 'style'], 
+        ['out', 'markup'], 
+        ['out', 'replace'], 
+        ['out', 'contentout'],
+        ['out', 'final'],
+    );
 
-        $this->inPorts['in']->on('data', [$this, 'repeat']);
-    }
-
-    public function repeat($content) {
-        lineOut(__METHOD__);
-        lineOut($content);
+    /**
+     * Aka: Repeat
+     * @param  string $content 
+     */
+    public function __invoke($content) {
+        lineOut(__METHOD__ . ' ' . '(Repeat)');
+        // lineOut($content);
 
         $this->outPorts['contentout']->send(new Content($content));
         $this->outPorts['contentout']->disconnect();

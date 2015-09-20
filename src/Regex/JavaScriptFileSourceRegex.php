@@ -12,5 +12,5 @@ namespace PlanckId\Regex;
  *      return ['//example.com/scripts.js', '//example.com/scripts.min.js']
  */
 class JavaScriptFileSourceRegex extends RegexInOut {
-    protected $regex = '/(?<=\<script)(src\".\")(?=\<\/script\>)/s';
+    protected $regex = '/(?<=\<script)(?:.*?)(?:src\=\"?)(.*?)(?=\")/s';
 }

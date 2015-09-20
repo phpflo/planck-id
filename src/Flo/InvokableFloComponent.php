@@ -11,7 +11,7 @@ abstract class InvokableFloComponent extends FloComponent {
         if (!empty($this->ports))
             $this->addPorts($this->ports);
         else 
-            $this->addPorts([['in', 'in', array()], 'err', 'out']);
+            $this->addPorts([['in', 'in', array()], ['out', 'error'], 'out']);
             
         $this->inPorts['in']->on(
             'data', 

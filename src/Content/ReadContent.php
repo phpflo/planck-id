@@ -15,8 +15,7 @@ class ReadContent extends InvokableFloComponent
         lineOut(__METHOD__);
         $data = StaticContent::$content; 
         // lineOut($data);
-
-        $this->outPorts['out']->send($data);
-        $this->outPorts['out']->disconnect();
+       
+        $this->sendThenDisconnect('out', $data);
     }
 }

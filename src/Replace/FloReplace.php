@@ -21,20 +21,10 @@ class FloReplace extends FloComponent
         $this->addPorts([
             ['in', 'content'], 
             ['in', 'identities'], 
-            'err', 
+            ['out', 'error'], 
             'out',
             ['out', 'contentout', array()],
             ['out', 'identitiesout', array()],
-
-            ['out', 'identitiesout0'],
-            ['out', 'identitiesout1'],
-            ['out', 'identitiesout2'],
-            ['out', 'identitiesout3'],
-            ['out', 'identitiesout4'],
-            ['out', 'contentout1'],
-            ['out', 'contentout2'],
-            ['out', 'contentout3'],
-            ['out', 'contentout4'],
         ]);
  
         // ***
@@ -52,17 +42,7 @@ class FloReplace extends FloComponent
         $this->setContent($content);
         StaticContent::$content = $content;
 
-        $this->outPorts['contentout1']->send($this->content);
-        $this->outPorts['contentout1']->disconnect();
-
-        $this->outPorts['contentout2']->send($this->content);
-        $this->outPorts['contentout2']->disconnect();
-
-        $this->outPorts['contentout3']->send($this->content);
-        $this->outPorts['contentout3']->disconnect();
-
-        $this->outPorts['contentout4']->send($this->content);
-        $this->outPorts['contentout4']->disconnect();
+        $this->sendThenDisconnect('contentout', $content);
     }
 
     public function setIdentities($identities) {
@@ -79,16 +59,9 @@ class FloReplace extends FloComponent
         foreach ($this->identities as $original => $new) {
             $content = ['content' => $this->content, 'original' => $original, 'new' => $new];
 
-            $this->outPorts['identitiesout1']->send($content);
-            $this->outPorts['identitiesout2']->send($content);
-            $this->outPorts['identitiesout3']->send($content);
-            $this->outPorts['identitiesout4']->send($content);
-        }
-        
-        $this->outPorts['identitiesout0']->disconnect();
-        $this->outPorts['identitiesout1']->disconnect();
-        $this->outPorts['identitiesout2']->disconnect();
-        $this->outPorts['identitiesout3']->disconnect();
-        $this->outPorts['identitiesout4']->disconnect();
+            $this->sendIfAttached('identitiesout', $content);
+        }            
+
+        $this->disconnectIfAttached('identitiesout', $content);
     }
 }   

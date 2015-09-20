@@ -93,7 +93,7 @@ $graph->addEdges(array(
   ["ReadRepeater", "final", "ReadContent_ForFinalOutput", "in"],
   ["ReadContent_ForFinalOutput", "out", "OutputFinal", "planckedcontent"],
 
-  ["FloReplaceFinal", "identitiesout0", "OutputFinal", "map"],
+  ["FloReplaceFinal", "identitiesout", "OutputFinal", "map"],
 ##################################################### EXTRACT
 #Markup
     ["Markup", "identities", "MarkupIdentitiesRegex", "in"],
@@ -117,18 +117,18 @@ $graph->addEdges(array(
 
 ["OriginalsToPlancks", "out", "FloReplaceFinal", "identities"],
 ##################################################### Replace
-  ["FloReplaceFinal", "contentout1", "ReplaceMarkupIdentities", "content"],
-  ["FloReplaceFinal", "identitiesout1", "ReplaceMarkupIdentities", "identities"], ##################
+  ["FloReplaceFinal", "contentout", "ReplaceMarkupIdentities", "content"],
+  ["FloReplaceFinal", "identitiesout", "ReplaceMarkupIdentities", "identities"], ##################
     ["ReplaceMarkupIdentities", "out", "DisplayOutputForTesting", "in"],
 
-  ["FloReplaceFinal", "contentout2", "ReplaceMarkupClasses", "content"],
-  ["FloReplaceFinal", "identitiesout2", "ReplaceMarkupClasses", "identities"],
+  ["FloReplaceFinal", "contentout", "ReplaceMarkupClasses", "content"],
+  ["FloReplaceFinal", "identitiesout", "ReplaceMarkupClasses", "identities"],
     ["ReplaceMarkupClasses", "out", "DisplayOutputForTesting", "in"],
 ###
   
 #ReplaceStyleBlockStyles<Replace>
-["FloReplaceFinal", "identitiesout3", "ReplaceStyleSelectors", "identities"],
-["FloReplaceFinal", "contentout3", "ReplaceStyleBlockStyles", "in"],
+["FloReplaceFinal", "identitiesout", "ReplaceStyleSelectors", "identities"],
+["FloReplaceFinal", "contentout", "ReplaceStyleBlockStyles", "in"],
     ["ReplaceStyleBlockStyles", "out", "DisplayOutputForTesting", "in"], # idk why?
 
     ["ReplaceStyleBlockStyles", "regex", "StyleBlocksRegex_Replace", "in"],
@@ -148,9 +148,9 @@ $graph->addEdges(array(
 ## ReadContentForJavaScriptBlocks 
 # in an instanceof Regex for JS
 ## JavaScriptRegex 
-["FloReplaceFinal", "identitiesout4", "ReplaceJavaScript", "identities"],
+["FloReplaceFinal", "identitiesout", "ReplaceJavaScript", "identities"],
 ### [ ] should use a new JavaScriptRegex_Replace
-["FloReplaceFinal", "contentout4", "ReplaceJavaScriptBlocks", "in"],
+["FloReplaceFinal", "contentout", "ReplaceJavaScriptBlocks", "in"],
 
     #ReadContentForJavaScriptBlocks<ReadContent>
     ["ReplaceJavaScriptBlocks", "content", "ReadContent_ForJavaScriptBlocks", "in"],

@@ -12,7 +12,7 @@ use PlanckId\Emitter;
 class DisplayOutputForTesting extends FloComponent
 {    
     public function __construct() {
-        $this->addPorts([['in', 'in', array()], 'err', 'out']);
+        $this->addPorts([['in', 'in', array()], ['out', 'error'], 'out']);
         $this->inPorts['in']->on('data', [$this, 'output']);
     }
 
@@ -21,14 +21,15 @@ class DisplayOutputForTesting extends FloComponent
      * @return void
      */
     public function output($data) {
-        if (is_array($data)) {
-            $data = Arr::flatten($data);    
-            $data = array_unique($data);
-            $data = implode(",", $data);
-            Emitter::emit('test.output', $data);
-        }
-
         lineOut(__METHOD__);
+        if (is_array($data)) {
+            $dataString = Arr::flatten($data);    
+            $dataString = array_unique($dataString);
+            $dataString = implode(",", $dataString);
+            Emitter::emit('test.output', $dataString);
+            lineOut($dataString);
+        }
+        lineOut(__METHOD__ . ' - original;');
         lineOut($data);
     }
 }

@@ -13,7 +13,7 @@ class FlattenAndUniqueArray extends InvokableFloComponent
     public function __invoke($data) {
         $data = Arr::flatten($data);    
         $data = array_unique($data);
-
+        
         $this->outPorts['out']->send($data);
         $this->outPorts['out']->disconnect();
     }

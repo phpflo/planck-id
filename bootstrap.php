@@ -5,6 +5,9 @@ require_once 'vendor/autoload.php';
 require_once 'src/Flo/FloComponent.php';
 require_once 'src/Flo/ExtendedFloGraph.php';
 require_once 'src/Flo/InvokableFloComponent.php';
+require_once 'src/Flo/ExtendedFloPort.php';
+require_once 'src/Flo/ExtendedFloArrayPort.php';
+require_once 'src/Flo/ExtendedFloNetwork.php';
 
 require_once 'src/Utilities/ArrayToString.php';
 require_once 'src/Utilities/StringToArray.php';
@@ -24,6 +27,7 @@ require_once 'src/Planck/PlanckCollectionIterator.php';
 
 require_once 'src/Originals/AddOriginals.php';
 require_once 'src/Originals/ReadOriginalAndPlanckMap.php';
+require_once 'src/Originals/WriteOriginalAndPlanckMap.php';
 require_once 'src/Originals/OriginalsToPlancks.php';
 require_once 'src/Originals/RemoveUselessOriginals.php';
 require_once 'src/Originals/SortOriginalsByLength.php';
@@ -59,6 +63,10 @@ require_once 'src/Replace/ReplaceJavaScriptContent.php';
 require_once 'src/Replace/ReplaceMarkupClasses.php';
 require_once 'src/Replace/ReplaceMarkupIdentities.php';
 require_once 'src/Replace/ReplaceStyleSelectors.php';
+
+require_once 'src/Core/ExtractOriginals.php';
+require_once 'src/Core/ExtractAndReplace.php';
+require_once 'src/Core/ContentAndMap.php';
 
 require_once 'src/Emitter.php';
 require_once 'src/FloMarkup.php';

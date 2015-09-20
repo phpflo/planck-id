@@ -5,15 +5,21 @@ namespace PlanckId\Utilities;
 use PlanckId\Flo\InvokableFloComponent;
 
 class ReadExternalFile extends InvokableFloComponent {
-    protected $fileName;
-    protected $content;
+    protected $ports = array(['in', 'in', []], 'out', ['out', 'filename']);
 
-    public function setFileName($fileName) {
-        $this->fileName($fileName);
+    public function __invoke($fileName) {
+        $this->fileContentOut($fileName);
+        $this->fileNameOut($fileName);
     }
 
-    // could also pass in the $fileName to the __invoke 
-    public function __invoke($fileName) {
-        $this->content = file_get_contents($this->fileName);
+    public function fileContentOut($fileName) {
+        if (!file_exists($fileName)) 
+            return $this->outPorts['error']->send("File {$fileName} doesn't exist");
+
+        $this->sendThenDisconnect('filename', file_get_contents($fileName), false);
+    }
+
+    public function fileNameOut($fileName) {
+        $this->sendThenDisconnect('filename', $fileName);
     }
 }

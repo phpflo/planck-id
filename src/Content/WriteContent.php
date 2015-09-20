@@ -8,8 +8,7 @@ class WriteContent extends InvokableFloComponent
 {    
     public function __invoke($data) {    
         StaticContent::$content = $data;
-        $this->outPorts['out']->send($data);
-        $this->outPorts['out']->disconnect();
+        $this->sendThenDisconnect('out', $data);
     }
 }
 class WriteContentFinal extends InvokableFloComponent
