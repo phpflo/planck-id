@@ -55,6 +55,14 @@ trait FeatureContents {
         return $this;
     }
 
+    /** @Then /^I should get non string equaling either "([^"]*)"$/ */
+    public function iShouldGetNonStringEqualingEither($data, $data2) {
+        if ($data !== $this->output && $data2 !== $this->output)
+            throw new Exception("Actual output is:\n" . var_export($this->output, true). "\n expected: \n" . var_export($data, true) . "\n or: \n" . var_export($data2, true));
+        return $this;
+    }
+    
+
     /** @Then /^I should get "([^"]*)"$/ */
     public function iShouldGet($string) {
         if ((string) $string !== (string) $this->output)

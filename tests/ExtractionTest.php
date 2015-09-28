@@ -82,13 +82,20 @@ class ExtractionTest extends \PHPUnit_Framework_TestCase {
             "left" => "e"]);  
 
         // finds `else` and adds it, starting at `f`
-        $test13->iShouldGetNonStringEqualing([
+        $test13->iShouldGetNonStringEqualingEither([
             "section-acebf433-a6ec-43f6-8166-55c8d129353a" => "a",
             "post-simple-media-adjacent-left-8-media" => "b",
             "media-adjacent" => "c",
             "post-simple" => "d",
             "else" => "f",
-            "left" => "e"]);
+            "left" => "e"], 
+
+            ["section-acebf433-a6ec-43f6-8166-55c8d129353a" => "a",
+            "post-simple-media-adjacent-left-8-media" => "b",
+            "media-adjacent" => "c",
+            "post-simple" => "d",
+            "left" => "e",
+            "else" => "f",]);
 
         $test13->assertOutput();
     }
