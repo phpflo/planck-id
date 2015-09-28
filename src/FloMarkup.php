@@ -7,8 +7,8 @@ use PlanckId\Flo\InvokableFloComponent;
 /**
  * A repeater to Identities + Classes for Markup
  */
-class FloMarkup extends InvokableFloComponent {      
-    protected $ports = ['in', ['out', 'classes'], ['out', 'identities']]; 
+class FloMarkup extends InvokableFloComponent {
+    protected $ports = ['in', ['out', 'classes'], ['out', 'identities']];
     public function __invoke($data) {
         $this->outPorts['identities']->send($data);
         $this->outPorts['identities']->disconnect();
@@ -16,4 +16,4 @@ class FloMarkup extends InvokableFloComponent {
         $this->outPorts['classes']->send($data);
         $this->outPorts['classes']->disconnect();
     }
-} 
+}

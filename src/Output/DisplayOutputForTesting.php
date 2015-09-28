@@ -21,9 +21,9 @@ class DisplayOutputForTesting extends FloComponent
      * @return void
      */
     public function output($data) {
-        lineOut(__METHOD__);
         if (is_array($data)) {
-            $dataString = Arr::flatten($data);    
+            lineOut(__METHOD__);
+            $dataString = Arr::flatten($data);
             $dataString = array_unique($dataString);
             $dataString = implode(",", $dataString);
             Emitter::emit('test.output', $dataString);

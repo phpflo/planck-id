@@ -1,0 +1,160 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * added some of this from @colinodells @thephpleague https://github.com/thephpleague/commonmark
+ */
+
+require __DIR__.'/../bootstrap.php';
+
+ini_set('display_errors', 'stderr');
+
+use Symfony\Component\Console\Application;
+use League\Flysystem\Filesystem;
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Memory\MemoryAdapter;
+
+use PlanckId\App\Planck;
+use PlanckId\App\GraphBuilder;
+use PlanckId\App\NetworkBuilder;
+use PlanckId\App\NetworkFactory;
+use PlanckId\App\PlanckFactory;
+use PlanckId\Flo\ExtendedFloGraph;
+use PlanckId\App\Command;
+
+foreach ($argv as $i => $arg) {
+    if ($i === 0) {
+        continue;
+    }
+    if (substr($arg, 0, 1) === '-') { // $arg[0]
+        switch ($arg) {
+            case '-h':
+            case '--help':
+                echo getHelpText();
+                exit(0);
+            case '--debug':
+                // 'debug', InputOption::VALUE_NONE, 'Do you want it to see the build process as it happens?'
+                enableDebugging();
+            default:
+                fail('Unknown option: ' . $arg);
+        }
+    } else {
+        $src = $argv[1];
+    }
+}
+
+if (isset($src)) {
+    if (!file_exists($src)) {
+        fail('File not found: ' . $src);
+    }
+    // 'inputContent', InputArgument::OPTIONAL, 'What do you want to use as input?'
+    $content = file_get_contents($src);
+} else {
+    $stdin = fopen('php://stdin', 'r');
+    stream_set_blocking($stdin, false);
+    $content = stream_get_contents($stdin);
+    fclose($stdin);
+    if (empty($content)) {
+        fail(getHelpText());
+    }
+}
+
+// 'mapOutputFile', InputArgument::OPTIONAL, 'Where do you want the OriginalToPlanckMap to be stored?'
+$mapFile = isset($argv[3]) ? $argv[3] : 'map.json';
+$contentType = isset($argv[4]) ? $argv[4] : 'markup';
+$method = isset($argv[5]) ? $argv[5] : Planck::EXTRACT_AND_REPLACE;
+
+runFrom($content, $mapFile, $contentType, $method);
+
+/**
+ * @param  string $name
+ * 
+ * @param  string $content
+ * @param  string $mapFile
+ * @param  string $contentType
+ * @param  string $method
+ */
+function runFrom($content, $mapFile, $contentType, $method) {
+    $adapter = new Local(__DIR__.'');
+    $filesystem = new Filesystem($adapter);
+    $networkFactory = new NetworkFactory();
+    $planckFactory = new PlanckFactory();
+
+    $planck = $planckFactory->create($name = "", $contentType, $method);
+    $planck->contentIn($content);
+    $planck->setContentType($contentType);
+
+    $planck->contentOut(function ($contents) {
+        echo $contents;
+    });
+    $planck->mapOut(function ($map) use ($filesystem, $mapFile) {
+        $filesystem->put($mapFile, json_encode($map));
+    });
+
+    if ($filesystem->has($mapFile)) {
+        $mapContents = $filesystem->read('map.json');
+        $map = json_decode($mapContents, true);
+        $planck->mapIn($map);
+    }
+
+    $networkFactory->createFromPlanck($planck);
+}
+
+/**
+ * get help and usage info
+ *
+ * @return string
+ */
+function getHelpText()
+{
+    return <<<HELP
+CommonMark - Markdown done right
+Usage: planck [INPUTFILE|INPUTCONTENT] [MAPFILE] [CONTENT] [METHOD] [OPTIONS] 
+    -h, --help  Shows help and usage information
+    If no file is given, input will be read from STDIN
+Examples:
+    Converting a file named markup.html:
+        planck markup.html
+    Converting a file named markup.html:
+        planck markup.html --debug
+    Converting a file and saving its output:
+        planck markup.html > output.html
+    Converting a file using an existing map replacing a style file:
+        planck style.css map.json style Replace 
+    Converting a file using an existing map, extracting more to add to the map, then replacing a style file:
+        planck style.css map.json style ExtractAndReplace
+    Extracting the the contents of a file and adding it to a map:
+        planck markup.html map.json markup Extract
+    Converting from STDIN:
+        echo -e '<section class="post-simple media-adjacent"></section><style>.post-simple{}</style>' | planck
+    Converting from STDIN and saving the output:
+        echo -e '<section class="post-simple media-adjacent"></section><style>.post-simple{}</style>' | planck > output.html
+Full documentation can be found at http://github.com/aretecode/planck-id
+HELP;
+}
+
+/**
+ * @param string $message Error message
+ */
+function fail($message) {
+    fwrite(STDERR, $message . "\n");
+    exit(1);
+}
+
+/**
+ * @return void
+ */
+function requireAutoloader() {
+    $autoloadPaths = [
+        // Local package usage
+        __DIR__ . '/../vendor/autoload.php',
+        // Package was included as a library
+        __DIR__ . '/../../../vendor/autoload.php',
+    ];
+    foreach ($autoloadPaths as $path) {
+        if (file_exists($path)) {
+            require_once $path;
+            break;
+        }
+    }
+}

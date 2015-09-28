@@ -13,8 +13,10 @@ class ReadExternalFile extends InvokableFloComponent {
     }
 
     public function fileContentOut($fileName) {
-        if (!file_exists($fileName)) 
-            return $this->outPorts['error']->send("File {$fileName} doesn't exist");
+        if (!file_exists($fileName)) {
+            $this->outPorts['error']->send("File {$fileName} doesn't exist");
+            throw new \RuntimeException("File {$fileName} doesn't exist");
+        }
 
         $this->sendThenDisconnect('filename', file_get_contents($fileName), false);
     }

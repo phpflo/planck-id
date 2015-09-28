@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace PlanckId\Replace;
 
@@ -12,9 +12,9 @@ abstract class AbstractIdentitiesOut extends FloComponent {
     protected $content    = ""; # FullContent
 
     protected $ports = [
-        ['in', 'content', array()], 
-        ['in', 'matchedcontent', array()], 
-        ['in', 'identities'], 
+        ['in', 'content', array()],
+        ['in', 'matchedcontent', array()],
+        ['in', 'identities'],
         ['out', 'error'],
         'out'
     ];
@@ -22,15 +22,14 @@ abstract class AbstractIdentitiesOut extends FloComponent {
     public function __construct() {
         $this->addPorts($this->ports);
 
-        $this->inPorts['content']->on('data', [$this, 'setContent']);        
-        $this->inPorts['identities']->on('data', [$this, '__invoke']);   
+        $this->inPorts['content']->on('data', [$this, 'setContent']);
+        $this->inPorts['identities']->on('data', [$this, '__invoke']);
         $this->inPorts['identities']->on('disconnect', [$this, 'out']);
     }
 
     public function out() {
-        // $this->outPorts['out']->send($this->content);
         $this->outPorts['out']->disconnect();
-    }    
+    }
 
     public function setContent($content) {
         lineOut(static::class . " " . __METHOD__);

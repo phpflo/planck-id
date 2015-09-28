@@ -11,7 +11,7 @@ class PlanckCollectionIterator {
     /**
      * @var array<string>
      */
-    private $plancks; 
+    private $plancks;
 
     /**
      * @var integer
@@ -19,35 +19,39 @@ class PlanckCollectionIterator {
     private $currentIndexPosition = 0;
 
     /**
-     * @param array $plancks 
+     * @param array $plancks
      */
     public function __construct($plancks) {
         $this->plancks = $plancks;
     }
-
     /**
-     * @return 
+     * @return string
      */
     public function next() {
         $this->currentIndexPosition++;
         return $this->current();
     }
-
+    /**
+     * @return string
+     */
     public function get($position = 0) {
         return $this->plancks[$position];
     }
-
     /**
-     * @return 
+     * @return string
      */
     public function current() {
         return $this->plancks[$this->currentIndexPosition];
     }
-
+    /**
+     * @return int
+     */
     public function count() {
         return count($this->plancks);
     }
-
+    /**
+     * @return void
+     */
     public function reset() {
         $this->currentIndexPosition = 0;
     }

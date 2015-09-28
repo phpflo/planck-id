@@ -12,7 +12,7 @@ class OutputToFile extends FloComponent
         $this->addPorts([['in', 'in', array()], ['in', 'file', array()], ['out', 'error'], 'out']);
         $this->onIn('file', 'data', 'setFile');
         $this->onIn('in', 'data', 'output');
-    }       
+    }
 
     /**
      * @param string $fileName 
@@ -27,6 +27,10 @@ class OutputToFile extends FloComponent
      */
     public function output($data) {
         lineOut(__METHOD__);
+       
+        if (is_object($data) && method_exists($data, '__toString')) 
+            $data = $data->__toString();
+
         if (!is_string($data)) 
             $data = var_export($data, true);
 

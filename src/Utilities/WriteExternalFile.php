@@ -11,17 +11,10 @@ class WriteExternalFile extends AbstractExternalFile {
 
     /**
      * using LocalFileAdapter
-     * @param FlySystem $flysystem 
+     * @param FlySystem $flysystem
      */
     public function __construct(FlySystem $flysystem) {
         $this->flysystem = $flysystem;
-    }
-
-
-
-
-    public function setContent($content) {
-        $this->content = $content;
     }
 
     public function __invoke($fileName) {
@@ -29,10 +22,7 @@ class WriteExternalFile extends AbstractExternalFile {
 
         $this->outPorts['out']->send();
         $this->outPorts['out']->disconnect();
-    }   
-
-
-
+    }
 
     /**
      * @param array<string, string> $data fileNameAndContent

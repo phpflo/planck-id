@@ -5,7 +5,7 @@ namespace PlanckId\Planck;
 class Plancks {
     public static $planckIterator = null;
     public static function planckIterator() {
-        if (self::$planckIterator === null) 
+        if (self::$planckIterator === null)
             self::$planckIterator = PlanckCollectionBuilder::built();
        
         return self::$planckIterator;

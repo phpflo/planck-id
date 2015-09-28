@@ -19,6 +19,13 @@ class ExtendedFloPort extends EventEmitter
         $this->name = $name;
     }
 
+    /**
+     * @return string
+     */
+    public function getName() {
+        return $this->name;
+    }
+
     public function attach(SocketInterface $socket)
     {
         if ($this->socket) {

@@ -14,7 +14,7 @@ class ForEachRepeat extends InvokableFloComponent
     public function __invoke($data) {
         lineOut(__METHOD__);
     
-        if (!is_array($data) || !($data instanceof \Transversable)) {
+        if (!is_array($data) && !($data instanceof \Transversable)) {
             $this->sendIfAttached('error', "Argument `{$data}` is not an array or Transverable");
             throw new InvalidArgumentException("Argument `{$data}` is not an array or Transverable");
         }

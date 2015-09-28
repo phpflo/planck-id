@@ -6,9 +6,9 @@ use League\Event\Emitter as EventEmitter;
 use League\Event\Event;
 
 /**
- *  [ ] if needed, 
+ *  [ ] if needed,
  *      could also have an array of $emitters and when ::emitt-ing, pass another @param on which to ::emit on
- *      /** @var array<Emitter> * / private static $emitters = []; 
+ *      /** @var array<Emitter> * / private static $emitters = [];
  */
 class Emitter {
     private static $emitter;
@@ -21,17 +21,17 @@ class Emitter {
     /**
      * @return League\Event\Emitter
      */
-    public static function emitter() {  
-        self::defaultEmitter();      
+    public static function emitter() {
+        self::defaultEmitter();
         return self::$emitter;
     }
-    public static function setEmitter($emitter) {        
+    public static function setEmitter($emitter) {
         self::$emitter = $emitter;
     }
     public static function defaultEmitter() {
-        if (self::$emitter === null)    
+        if (self::$emitter === null)
             self::setEmitter(new EventEmitter);
-    }    
+    }
     public static function addListener($event, $listener, $priority = EventEmitter::P_NORMAL) {
         return self::emitter()->addListener($event, $listener, $priority);
     }

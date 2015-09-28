@@ -52,7 +52,7 @@ class OutputFinal extends FloComponent
         echo "<hr><hr><hr>";
         lineOut(__METHOD__);
         echo "<h1>Original to Planck map</h1>";
-        lineOut($this->map);        
+        lineOut($this->map);
 
         echo "<h1>Original content</h1>";
         lineOut($this->originalContent);

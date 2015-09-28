@@ -6,7 +6,6 @@ Feature: ExtractOriginals
 Scenario: Extract 1 Identity from a Selector
   Given I have content "element.selector#idee[attr='eh']"
   When I extract style identities
-  And I put that into a file named "/files/test4.txt"
   Then I should get "idee"
 
 Scenario: Extract 2 Originals from Markup
@@ -28,7 +27,7 @@ Scenario: Extract 1 Class from a Selector
 
 Scenario: Extract 2 Originals from Styles without context: 1 Identity 1 Class
   Given I have content "element.classOriginal#idee[attr='eh']"
-  When I extract originals without context
+  When I extract style selector originals
   Then I should gets: 
     """
     classOriginal,idee

@@ -3,7 +3,7 @@
 namespace PlanckId\Regex;
 
 /**
- * @example 
+ * @example
  *    @see extractClassContents()::@return
  *    pass in `a-long_selector-2 {$sr45()E@# someOtherSelector ad1ffSelector`
  *    returns array(a-long_selector-2, someOtherSelector, ad1ffSelector)

@@ -1,0 +1,8 @@
+@media (min-width: 400px) and (max-width: 589px) {#post-simple-media-adjacent-left-8-media {}}@media (min-width: 590px) 
+{#post-simple-media-adjacent-left-8-media {}
+
+.testing { background-color: #000); }
+.testing2, .testing3 { background-color: #000); }
+.testing2, .testing-style-only { background-color: #000); }
+#testingStyle_only_id {} 
+#testing1, #testing2, #testing-id {}

@@ -19,25 +19,36 @@
 * [x] change some of the terms using `Identities` into `Plancks` & `Originals`
 * [x] remove unnessecary comments
 * [ ] should put Realm as its own lib
-* [ ] should put utilities in its own support library
-* [ ] autoload the Components
+* [ ] should put utilities in its own support library and wrap functions in `if !func exists`
+* [x] autoload the Components
 * [x] put on packagist
-* [ ] automatically scale the creation of the PlanckCollectionBuilder
+* [x] automatically scale the creation of the PlanckCollectionBuilder
 * [x] enable the full range of PlanckBuilder in the meantime
 * [x] svg badges for github project
 * [ ] upgrade the Planck to use more UPPERCASE letters
 * [ ] add Inflector on the FloComponent to make an out and in port automatically on connect and disconnect (example: `function onOutExamplePortName()` and `function onInExamplePortName` and `function onExamplePortDisconnect()`
 * [ ] move ReadRepeater, ReadRepeaterFinal, StyleRegexRepeater to /Core/
 * [x] create Extract Component
-* [ ] remove need for ReadRepeater and use Extract, 
+* [x] remove need for ReadRepeater and use Extract, 
 * [ ] add a .dev/non-minified version of the contents and link to it in the comments
-* [ ] change FloReplace using `identities` in port to `map`
+* [x] change FloReplace using `identities` in port to `map`
+* [ ] refactor the FloComponent and split inflector responsibilities to another class, possibly as Middleware for the Network - it would be easier if phpflo did not depend on eventement which uses call_user_func_array with the arguments, otherwise additional arguments could be passed in to use for inflecting.
+* [ ] addPort related functions should also be moved to another class which can be injected via DI
+* [ ] RegexInOut::get remove the array to string and leave that up to a dedicated Component (ArrayToString)
+* [PlanckId\Utilities\Callback] add call_user_func_array
 
+* ::isMarkup, ::isScript, ::isStyle, ::hasStyle, ::hasMarkup, ::hasScript, for identifying the content
+* a method to define the type (script, style, markup) when it is passed in
+* DIC in Example
+* split the [Regex/] into sub modules, especially for JavaScript when matching non-vanilla/frameworks+libraries
+* [x] fileType for incoming content
+* [ ] refactor & rename ContentAndMap
+* [ ] extract [$languages] from $content and replace|extract|extractAndReplace [$z]
 (thanks Bad_Advice_Cat for these next 4)
-* [ ] flush out the index.php page, remove $_REQUEST use
-* [ ] change OutputFinal to emitt an event so the Client can register their own listener to deal with the output
-* [ ] put the OutputFinal output as a value object, possibly attaching the correct Component for outputting in different formats (json, html) and on different systems (cli, browser) 
-* [ ] fully implement debugging on/off
+* [x] flush out the index.php page, remove $_REQUEST use
+* [x] change OutputFinal to emitt an event so the Client can register their own listener to deal with the output
+* [x] put the OutputFinal output as a value object, possibly attaching the correct Component for outputting in different formats (json, html) and on different systems (cli, browser) 
+* [x] implement debugging on/off
 
 ### testing
 * [x] ~write it BDD 
@@ -60,11 +71,14 @@ Scenario: Extract and Minify Markup and Style Selectors from Contents using Filt
 * [ ] test with Styles, but no Scripts. Test with Scripts, but no Styles. Test with Styles & Scripts, but no other Markup.
 * [ ] test to show ensure that longest is first for the sorting originals
 * [x] gzip comparison
-* [x] create Flo/ExtendedFloNetwork
-* [ ] DI in Flo/ExtendedFloNetwork
-* [x] create Flo/ExtendedFloPort & Flo/ExtendedFloArrayPort to use ::isAttached
+* [x] create [PlanckId\Flo\ExtendedFloNetwork]
+* [ ] DI in [PlanckId\Flo\ExtendedFloNetwork]
+* [x] create [Planck\Flo\ExtendedFloPort] & [Planck\Flo\ExtendedFloArrayPort]to use ::isAttached
 * [ ] test ^
 * [ ] ask about whether it should use ::isAttached, or if it should create multiple Components
+* [x] change Run.php to use PHPUnit tests which run Behat & eliminate that duplication
+* [x] change TestingContentOutput to use ArrayToString
+* [ ] add the additional PHPunit tests into cucumber syntax for behat
 
 (thanks simensen)
 * [x] move behat to require-dev
@@ -119,9 +133,12 @@ Scenario: Extract and Minify Markup and Style Selectors from Contents using Filt
 * [ ] add files, blacklist and whitelist other files
 * [ ] be able to pass in website urls
 * [ ] be able to download a zip from the processed website url
-* [ ] use FlySystem for files
-* [ ] automatically output the json network graphs to their respective files
-
+* [x] use FlySystem for files
+* [x] automatically output the json network graphs to their respective files
+* [x] set it to only extract from Markup, then replace only those in Script & Style
+* [x] have FeatureContext use & test [Planck\Planck]
+* [ ] add tests extracting only identities or classes to the app/
+ 
 ### possibly in the future 
 * [ ] could redo using complete OOP, also could use EDD
 * [x] content could have a ReadContent & WriteContent
@@ -134,3 +151,4 @@ Scenario: Extract and Minify Markup and Style Selectors from Contents using Filt
 * [ ] implement StaticContent in an alternate way
 * [ ] use [phpDaemon](http://daemon.io) 
 * [ ] extend or revise how to do debugging ports instead of `isConnected` which is seemingly on the wrong side of the pipe.
+* [ ] each of the Regex could be a flo component that calls a RegexComponent and passes in the regex

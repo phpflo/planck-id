@@ -5,17 +5,17 @@ namespace PlanckId\Utilities;
 use PlanckId\Flo\FloComponent;
 
 class ArrayToString extends FloComponent
-{    
+{
     protected $delimiter = ',';
 
     public function __construct() {
         $this->addPorts([['in', 'in', array()], ['in', 'delimiter', array()], ['out', 'error'], 'out']);
         $this->onIn('delimiter', 'data', 'setDelimiter');
-        $this->onIn('in', 'data', 'output');        
-    }    
+        $this->onIn('in', 'data', 'output');
+    }
 
     /**
-     * @param string $delimiter 
+     * @param string $delimiter
      */
     public function setDelimiter($delimiter) {
         $this->delimiter = $delimiter;
@@ -27,12 +27,12 @@ class ArrayToString extends FloComponent
      */
     public function output($data) {
         lineOut(__METHOD__);
-    
-        if (is_array($data) || $data instanceof \Transversable) 
+
+        if (is_array($data) || $data instanceof \Transversable)
             $data = implode($this->delimiter, $data);
-       
+
         // lineOut($data);
-        
+
         $this->outPorts['out']->send($data);
         $this->outPorts['out']->disconnect();
     }

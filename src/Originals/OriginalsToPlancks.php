@@ -27,30 +27,31 @@ class OriginalsToPlancks extends InvokableFloComponent {
  
     /**
      * @example 
-     *    pass in the identities  
+     *    pass in the originals
      *    
-     * @param  array<string>|string $originalArray 
+     * @param  array<string>|string $originalArray
      * @return void
      */
     public function __invoke($originalArray) {
         lineOut(__METHOD__);
 
-        foreach ((array)$originalArray as $original) 
+        foreach ((array)$originalArray as $original)
             $this->originalToPlanck($original);
 
         $this->outPorts['out']->send(OriginalAndPlanckMap::$map);
     }
 
     /**
-     * @param  string $original 
-     * @return void       
+     * @param  string $original
+     * @return void
      */
     function originalToPlanck($original) {
         if (!OriginalAndPlanckMap::has($original)) {
-            // lineOut('has it');
             $new = Plancks::next();
-            // lineOut($new);
-            OriginalAndPlanckMap::set($original, $new); 
+            while (OriginalAndPlanckMap::hasPlanck($new)) 
+                $new = Plancks::next();
+
+            OriginalAndPlanckMap::set($original, $new);
             OriginalAndPlanckMap::sortByLength();
         }
     }

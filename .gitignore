@@ -1,5 +1,6 @@
 vendor
 composer.lock
+dev
 bin/behat
 bin/behat.bat
 bin/doctrine-dbal

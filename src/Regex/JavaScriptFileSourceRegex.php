@@ -3,11 +3,11 @@
 namespace PlanckId\Regex;
 
 /**
- * @example 
+ * @example
  *      ...<script src="//example.com/scripts.js"></script>...
  *      return '//example.com/scripts.js'
- *      
- * @example 
+ *
+ * @example
  *      ...<script src="//example.com/scripts.js"></script><script src="//example.com/scripts.min.js"></script>...
  *      return ['//example.com/scripts.js', '//example.com/scripts.min.js']
  */

@@ -11,5 +11,5 @@ abstract class AbstractExternalFile extends InvokableFloComponent {
 
     public function setFileName($fileName) {
         $this->fileName = $fileName;
-    }        
+    }
 }

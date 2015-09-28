@@ -8,7 +8,7 @@ use PlanckId\Content\Content;
 class ExtractAndReplace extends InvokableFloComponent
 {   
     protected $ports = array(
-        ['in', 'in', array()], 
+        ['in', 'in', array()],
         ['out', 'extract'],
         ['out', 'replace'], 
     );
@@ -20,7 +20,7 @@ class ExtractAndReplace extends InvokableFloComponent
     public function __invoke($content) {
         lineOut(__METHOD__);
 
-        $this->sendThenDisconnect('replace', new Content($content));
+        $this->sendThenDisconnect('replace', $content);
         $this->sendThenDisconnect('extract', (string) $content);
     }
 } 

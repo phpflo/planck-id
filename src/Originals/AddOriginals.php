@@ -14,7 +14,7 @@ class AddOriginals extends InvokableFloComponent {
         $this->sendIfAttached('debug', $data);
     }
 
-    public function __invoke($originalsArray) {        
+    public function __invoke($originalsArray) {
         lineOut(__METHOD__);
         $this->debug($originalsArray);
         $this->outPorts['out']->send($originalsArray);

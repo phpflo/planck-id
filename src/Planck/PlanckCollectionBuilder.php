@@ -10,13 +10,13 @@ use PlanckId\Planck\PlanckCollectionIterator;
  * A
  * AA
  * A1
- * A1A 
+ * A1A
  * AA1
  * A11
  * AAA
  * A1AA
  * A11A
- * AAA1 
+ * AAA1
  */
 class PlanckCollectionBuilder {
     /**
@@ -44,45 +44,51 @@ class PlanckCollectionBuilder {
         return new PlanckCollectionIterator($values);
     }
     /**
+     * @return array range A-Z
+     */
+    public function singleUppercaseLetter() {
+        return range('A', 'Z');
+    }    
+    /**
      * @return array range a-z
      */
-    function singleLetter() {
+    public function singleLetter() {
         return range('a', 'z');
     }        
     /**
      * @return array range 0-9
      */
-    function singleNumber() {
+    public function singleNumber() {
         return range(0, 9);
     }   
     /**
      * @return array aa-zz
      */
-    function letterLetter() {
+    public function letterLetter() {
         return $this->appendLettersToEach($this->singleLetter());
     }
     /**
      * @return array a0-z9
      */
-    function letterNumber() {
+    public function letterNumber() {
         return $this->appendNumbersToEach($this->singleLetter());
     }        
     /**
      * @return array aaa-zzz
      */
-    function letterLetterLetter() {
+    public function letterLetterLetter() {
         return $this->appendLettersToEach($this->letterLetter());
     }    
     /**
      * @return array a0a-z9z
      */
-    function letterNumberLetter() {
+    public function letterNumberLetter() {
         return $this->appendNumbersToEach($this->letterNumber());
     }    
     /**
      * @return array a00-z99
      */
-    function letterNumberNumber() {
+    public function letterNumberNumber() {
         return $this->appendNumbersToEach($this->letterNumber());
     }
 
@@ -92,13 +98,13 @@ class PlanckCollectionBuilder {
      *      return  [0 => 'a1', 1 => 'a2' ... 26 => 'b1', 27 => 'b2' ... ]
      * 
      * 
-     * @param  array $arrayOfValues 
-     * @return array     
+     * @param  array $arrayOfValues
+     * @return array
      */
-    function appendNumbersToEach($arrayOfValues) {
+    public function appendNumbersToEach($arrayOfValues) {
         $arrayToReturn = array();
         foreach ($arrayOfValues as $value)  
-            foreach ($this->singleNumber() as $number)           
+            foreach ($this->singleNumber() as $number)
                 $arrayToReturn[] = $value . $number;
         
         return $arrayToReturn;
@@ -110,13 +116,13 @@ class PlanckCollectionBuilder {
      *      return  [0 => 'aa', 1 => 'ab' ... 26 => 'ba', 27 => 'bb' ... ]
      * 
      * 
-     * @param  array $arrayOfValues 
-     * @return array     
+     * @param  array $arrayOfValues
+     * @return array
      */
-    function appendLettersToEach($arrayOfValues) {
+    public function appendLettersToEach($arrayOfValues) {
         $arrayToReturn = array();
         foreach ($arrayOfValues as $value) 
-            foreach ($this->singleLetter() as $letter)          
+            foreach ($this->singleLetter() as $letter)
                 $arrayToReturn[] = $value . $letter;
             
         return $arrayToReturn;

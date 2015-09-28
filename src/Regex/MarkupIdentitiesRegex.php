@@ -3,7 +3,7 @@
 namespace PlanckId\Regex;
 
 /**
- * @example 
+ * @example
  *    pass in    <p id="a-long_selector-2">...</p>
  *    get back   a-long_selector-2
  */

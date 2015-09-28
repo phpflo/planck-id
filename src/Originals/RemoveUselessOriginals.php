@@ -11,9 +11,8 @@ class RemoveUselessOriginals extends InvokableFloComponent {
     public function __invoke($identityArray) {
         lineOut(__METHOD__);
         lineOut($identityArray);
-        $identityArray = removeEmptyStringAndNullKeyAndValues($identityArray);   
+        $identityArray = removeEmptyStringAndNullKeyAndValues($identityArray);
         lineOut("after useless removed");
-        //$identityArray = array_unique($identityArray);     
         lineOut($identityArray);
 
         $this->outPorts['out']->send($identityArray);

@@ -1,0 +1,615 @@
+{
+    "properties": {
+        "name": ""
+    },
+    "processes": {
+        "Read File": {
+            "component": "ReadFile"
+        },
+        "MarkupClassesRegex": {
+            "component": "PlanckId\\Regex\\MarkupClassesRegex"
+        },
+        "MarkupIdentitiesRegex": {
+            "component": "PlanckId\\Regex\\MarkupIdentitiesRegex"
+        },
+        "MarkupClassesFromMatchedRegex": {
+            "component": "PlanckId\\Regex\\MarkupClassesFromMatchedRegex"
+        },
+        "StyleBlocksRegex_Replace": {
+            "component": "PlanckId\\Regex\\StyleBlocksRegex"
+        },
+        "StyleBlocksRegex_Match": {
+            "component": "PlanckId\\Regex\\StyleBlocksRegex"
+        },
+        "InlineStylesRegex_Replace": {
+            "component": "PlanckId\\Regex\\InlineStylesRegex"
+        },
+        "InlineStylesRegex_Match": {
+            "component": "PlanckId\\Regex\\InlineStylesRegex"
+        },
+        "StyleIdentitiesRegex": {
+            "component": "PlanckId\\Regex\\StyleIdentitiesRegex"
+        },
+        "StyleIdentitiesRegex_Match": {
+            "component": "PlanckId\\Regex\\StyleIdentitiesRegex"
+        },
+        "StyleClassesRegex_Match": {
+            "component": "PlanckId\\Regex\\StyleClassesRegex"
+        },
+        "StyleClassesRegex": {
+            "component": "PlanckId\\Regex\\StyleClassesRegex"
+        },
+        "JavaScriptRegex_Match": {
+            "component": "PlanckId\\Regex\\JavaScriptRegex"
+        },
+        "JavaScriptRegex_Replace": {
+            "component": "PlanckId\\Regex\\JavaScriptRegex"
+        },
+        "Style": {
+            "component": "PlanckId\\Replace\\FloStyle"
+        },
+        "StyleRegexRepeater": {
+            "component": "PlanckId\\StyleRegexRepeater"
+        },
+        "Markup": {
+            "component": "PlanckId\\FloMarkup"
+        },
+        "AddOriginals": {
+            "component": "PlanckId\\Originals\\AddOriginals"
+        },
+        "OriginalsToPlancks": {
+            "component": "PlanckId\\Originals\\OriginalsToPlancks"
+        },
+        "RemoveUselessOriginals": {
+            "component": "PlanckId\\Originals\\RemoveUselessOriginals"
+        },
+        "SortOriginalsByLength": {
+            "component": "PlanckId\\Originals\\SortOriginalsByLength"
+        },
+        "ReadOriginalAndPlanckMap": {
+            "component": "PlanckId\\Originals\\ReadOriginalAndPlanckMap"
+        },
+        "ReadMap_ForContentAndMap": {
+            "component": "PlanckId\\Originals\\ReadOriginalAndPlanckMap"
+        },
+        "ReadMapDeadEnd": {
+            "component": "PlanckId\\Originals\\ReadOriginalAndPlanckMap"
+        },
+        "WriteOriginalAndPlanckMap": {
+            "component": "PlanckId\\Originals\\WriteOriginalAndPlanckMap"
+        },
+        "WriteMap_ForContentAndMap": {
+            "component": "PlanckId\\Originals\\WriteOriginalAndPlanckMap"
+        },
+        "WriteMapDeadEnd": {
+            "component": "PlanckId\\Originals\\WriteOriginalAndPlanckMap"
+        },
+        "ExtractOriginals": {
+            "component": "PlanckId\\Core\\ExtractOriginals"
+        },
+        "ExtractAndReplace": {
+            "component": "PlanckId\\Core\\ExtractAndReplace"
+        },
+        "ContentAndMap": {
+            "component": "PlanckId\\Core\\ContentAndMap"
+        },
+        "FloReplace": {
+            "component": "PlanckId\\Replace\\FloReplace"
+        },
+        "ReplaceStyleSelectors": {
+            "component": "PlanckId\\Replace\\ReplaceStyleSelectors"
+        },
+        "ReplaceMarkupIdentities": {
+            "component": "PlanckId\\Replace\\ReplaceMarkupIdentities"
+        },
+        "ReplaceMarkupClasses": {
+            "component": "PlanckId\\Replace\\ReplaceMarkupClasses"
+        },
+        "ReplaceJavaScript": {
+            "component": "PlanckId\\Replace\\ReplaceJavaScript"
+        },
+        "FlattenAndUniqueArray": {
+            "component": "PlanckId\\Utilities\\FlattenAndUniqueArray"
+        },
+        "ReadRepeater": {
+            "component": "PlanckId\\ReadRepeater"
+        },
+        "ReadRepeaterFinal": {
+            "component": "PlanckId\\ReadRepeaterFinal"
+        },
+        "WriteReadRepeaterContent": {
+            "component": "PlanckId\\Content\\WriteContent"
+        },
+        "OutputToFile": {
+            "component": "PlanckId\\Output\\OutputToFile"
+        },
+        "DisplayOutputForTesting": {
+            "component": "PlanckId\\Output\\DisplayOutputForTesting"
+        },
+        "EmptyOutputForTesting": {
+            "component": "PlanckId\\Output\\EmptyOutputForTesting"
+        },
+        "OutputFinal": {
+            "component": "PlanckId\\Output\\OutputFinal"
+        },
+        "Display": {
+            "component": "Output"
+        },
+        "ReadContent_ForStyleBlocks": {
+            "component": "PlanckId\\Content\\ReadContent"
+        },
+        "ReadContent_ForJavaScriptBlocks": {
+            "component": "PlanckId\\Content\\ReadContent"
+        },
+        "ReadContent": {
+            "component": "PlanckId\\Content\\ReadContent"
+        },
+        "WriteContent": {
+            "component": "PlanckId\\Content\\WriteContent"
+        },
+        "ReadContent_ForContentAndMap": {
+            "component": "PlanckId\\Content\\ReadContent"
+        },
+        "WriteContent_ForContentAndMap": {
+            "component": "PlanckId\\Content\\WriteContent"
+        },
+        "ReadContentDeadEnd": {
+            "component": "PlanckId\\Originals\\ReadOriginalAndPlanckMap"
+        },
+        "WriteContentDeadEnd": {
+            "component": "PlanckId\\Originals\\ReadOriginalAndPlanckMap"
+        },
+        "ReplaceStyleBlockStyles": {
+            "component": "PlanckId\\Replace\\Replace"
+        },
+        "ReplaceJavaScriptBlocks": {
+            "component": "PlanckId\\Replace\\Replace"
+        },
+        "TestingOutput": {
+            "component": "PlanckId\\Output\\TestingContentOutput"
+        },
+        "StringToArray": {
+            "component": "PlanckId\\Utilities\\StringToArray"
+        },
+        "ArrayToString": {
+            "component": "PlanckId\\Utilities\\ArrayToString"
+        },
+        "ArrayKeys": {
+            "component": "PlanckId\\Utilities\\ArrayKeys"
+        },
+        "JsonEncode": {
+            "component": "PlanckId\\Utilities\\JsonEncode"
+        },
+        "JsonDecode": {
+            "component": "PlanckId\\Utilities\\JsonDecode"
+        },
+        "Callback_ForMap": {
+            "component": "PlanckId\\Utilities\\Callback"
+        },
+        "Callback_ForContent": {
+            "component": "PlanckId\\Utilities\\Callback"
+        },
+        "ReadExternalFile_Map": {
+            "component": "PlanckId\\Utilities\\ReadExternalFile"
+        },
+        "OutputToFile_Map": {
+            "component": "PlanckId\\Output\\OutputToFile"
+        },
+        "OutputToFile_Content": {
+            "component": "PlanckId\\Output\\OutputToFile"
+        },
+        "ReadOriginalAndPlanckMap_ForOutput": {
+            "component": "PlanckId\\Originals\\ReadOriginalAndPlanckMap"
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "AddOriginals",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "RemoveUselessOriginals",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "RemoveUselessOriginals",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "SortOriginalsByLength",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "SortOriginalsByLength",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "OriginalsToPlancks",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "ContentAndMap",
+                "port": "content"
+            },
+            "tgt": {
+                "process": "WriteContent",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "WriteContent",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "ReadContent",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "ReadContent",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "ExtractOriginals",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "ReadContent",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "FloReplace",
+                "port": "content"
+            }
+        },
+        {
+            "src": {
+                "process": "ExtractOriginals",
+                "port": "markup"
+            },
+            "tgt": {
+                "process": "Markup",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "Markup",
+                "port": "identities"
+            },
+            "tgt": {
+                "process": "MarkupIdentitiesRegex",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "MarkupIdentitiesRegex",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "AddOriginals",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "Markup",
+                "port": "classes"
+            },
+            "tgt": {
+                "process": "MarkupClassesRegex",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "MarkupClassesRegex",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "MarkupClassesFromMatchedRegex",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "MarkupClassesFromMatchedRegex",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "AddOriginals",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "ExtractOriginals",
+                "port": "style"
+            },
+            "tgt": {
+                "process": "Style",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "Style",
+                "port": "styleblocks"
+            },
+            "tgt": {
+                "process": "StyleBlocksRegex_Match",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "StyleBlocksRegex_Match",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "StyleRegexRepeater",
+                "port": "styleblocks"
+            }
+        },
+        {
+            "src": {
+                "process": "StyleRegexRepeater",
+                "port": "identities"
+            },
+            "tgt": {
+                "process": "StyleIdentitiesRegex_Match",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "StyleIdentitiesRegex_Match",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "AddOriginals",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "StyleRegexRepeater",
+                "port": "classes"
+            },
+            "tgt": {
+                "process": "StyleClassesRegex_Match",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "StyleClassesRegex_Match",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "AddOriginals",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "FloReplace",
+                "port": "contentout"
+            },
+            "tgt": {
+                "process": "ReplaceMarkupIdentities",
+                "port": "content"
+            }
+        },
+        {
+            "src": {
+                "process": "FloReplace",
+                "port": "identitiesout"
+            },
+            "tgt": {
+                "process": "ReplaceMarkupIdentities",
+                "port": "identities"
+            }
+        },
+        {
+            "src": {
+                "process": "FloReplace",
+                "port": "contentout"
+            },
+            "tgt": {
+                "process": "ReplaceMarkupClasses",
+                "port": "content"
+            }
+        },
+        {
+            "src": {
+                "process": "FloReplace",
+                "port": "identitiesout"
+            },
+            "tgt": {
+                "process": "ReplaceMarkupClasses",
+                "port": "identities"
+            }
+        },
+        {
+            "src": {
+                "process": "FloReplace",
+                "port": "identitiesout"
+            },
+            "tgt": {
+                "process": "ReplaceStyleSelectors",
+                "port": "identities"
+            }
+        },
+        {
+            "src": {
+                "process": "FloReplace",
+                "port": "contentout"
+            },
+            "tgt": {
+                "process": "ReplaceStyleSelectors",
+                "port": "match"
+            }
+        },
+        {
+            "src": {
+                "process": "FloReplace",
+                "port": "contentout"
+            },
+            "tgt": {
+                "process": "ReplaceJavaScriptBlocks",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "ReplaceJavaScriptBlocks",
+                "port": "content"
+            },
+            "tgt": {
+                "process": "ReadContent_ForJavaScriptBlocks",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "ReadContent_ForJavaScriptBlocks",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "ReplaceJavaScript",
+                "port": "content"
+            }
+        },
+        {
+            "src": {
+                "process": "ReplaceJavaScriptBlocks",
+                "port": "regex"
+            },
+            "tgt": {
+                "process": "JavaScriptRegex_Replace",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "JavaScriptRegex_Replace",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "ReplaceJavaScript",
+                "port": "match"
+            }
+        },
+        {
+            "src": {
+                "process": "FloReplace",
+                "port": "identitiesout"
+            },
+            "tgt": {
+                "process": "ReplaceJavaScript",
+                "port": "identities"
+            }
+        },
+        {
+            "src": {
+                "process": "ContentAndMap",
+                "port": "map"
+            },
+            "tgt": {
+                "process": "WriteOriginalAndPlanckMap",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "ContentAndMap",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "ReadContent_ForContentAndMap",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "ReadContent_ForContentAndMap",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Callback_ForContent",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "ContentAndMap",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "ReadOriginalAndPlanckMap_ForOutput",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "ReadOriginalAndPlanckMap_ForOutput",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Callback_ForMap",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "OriginalsToPlancks",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "DisplayOutputForTesting",
+                "port": "in"
+            }
+        },
+        {
+            "data": {},
+            "tgt": {
+                "process": "Callback_ForMap",
+                "port": "callback"
+            }
+        },
+        {
+            "data": {},
+            "tgt": {
+                "process": "Callback_ForContent",
+                "port": "callback"
+            }
+        },
+        {
+            "data": "<section id=\"section-acebf433-a6ec-43f6-8166-55c8d129353a\" class=\"post-simple media-adjacent left else\" style=\"background-color:rgb(45, 49, 57); position:relative\">\r\n<style type=\"text\/css\">#section-acebf433-a6ec-43f6-8166-55c8d129353a {\r\ntext-shadow:0 1px 0 rgba(22, 24, 29, 0.5);\r\n}<\/style><style type=\"text\/css\" scoped=\"scoped\">@media (max-width: 399px) {\r\n#post-simple-media-adjacent-left-8-media {}}\r\n@media (min-width: 400px) and (max-width: 589px) {#post-simple-media-adjacent-left-8-media {}}@media (min-width: 590px) {#post-simple-media-adjacent-left-8-media {}<style type=\"text\/css\">#section-acebf433-a6ec-43f6-8166-55c8d129353a {} <\/style>\r\n<script>if (1){} else {\r\n    var test = document.getElementById(\"post-simple-media-adjacent-left-8-media\"); \r\n    var test = document.getElementById(\"post-simple-media-adjacent-left\"); \r\n    var postSimpleMediaAdjacentLeft8Media = document.getElementById('post-simple-media-adjacent-left-8-media');\r\n    var postSimpleMediaAdjacentLeft8Media = document.getElementById(\"post-simple-media-adjacent-left-8-media\");\r\n    var postSimpleMediaAdjacentLeft8Media = document.getElementById('post-simple-media-adjacent-left-8-media post-simple-media-adjacent-left-8-media');\r\n    var postSimpleMediaAdjacentLeft8Media = document.querySelectorAll('#whoknows > post-simple-media-adjacent-left-8-media');\r\n    $post-simple-media-adjacent-left-8-media\r\n    var postSimpleMediaAdjacentLeft8Media = document.getElementById('post-simple-media-adjacent-left-8-media')var postSimpleMediaAdjacentLeft8Media = document.getElementById('post-simple-media-adjacent-left-8-media');\r\n    var test = document.getElementById(\"media-adjacent\"); \r\n\r\ndocument.getElementById(\"media-adjacent\");\r\ndocument.getElementById(\"post-simple-media-adjacent-left\");\r\n} <\/script>\r\n(?:\\\"|\\')((?:.*?)(media-adjacent)(?:.*?))(?1)(?=\\\"|\\')",
+            "tgt": {
+                "process": "ContentAndMap",
+                "port": "content"
+            }
+        },
+        {
+            "data": "not sure about this... what should replace it?",
+            "tgt": {
+                "process": "ContentAndMap",
+                "port": "last"
+            }
+        }
+    ]
+}

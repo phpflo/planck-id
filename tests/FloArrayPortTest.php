@@ -72,12 +72,10 @@ class MockRepeaterComponent extends InvokableFloComponent {
     }
 }
 
-class FloArrayPortTest extends \PHPUnit_Framework_TestCase
-{
+class FloArrayPortTest extends \PHPUnit_Framework_TestCase {
     # public function testArrayPortIn(){}    
 
-    public function testArrayPortOut()
-    {      
+    public function testArrayPortOut() {      
         $graph = new ExtendedFloGraph("arrayporttest");
         $graph->addNode("MockFloArrayPortInAndArrayPortOut", "PlanckId\MockFloArrayPortInAndArrayPortOut");
 

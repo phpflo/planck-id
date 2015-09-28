@@ -8,7 +8,7 @@ use PlanckId\Flo\InvokableFloComponent;
  * ReplaceStyles
  */
 class FloStyle extends InvokableFloComponent { 
-    protected $ports = ['in', ['out', 'styleblocks'], ['out', 'inlinestyles']]; 
+    protected $ports = ['in', ['out', 'styleblocks'], ['out', 'inlinestyles']];
     public function __invoke($data) {
         lineOut(__METHOD__);
 
