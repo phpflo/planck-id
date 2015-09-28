@@ -6,10 +6,6 @@ use FeatureContext;
 
 class ExtractionTest extends \PHPUnit_Framework_TestCase {
 
-    public function onNonSuccessfulTest(\Exception $e) {
-      dump($e);
-    }
-
     public function testExtractingStyleSelectorOriginals() {
         $test9 = new FeatureContext([]);
         $test9->iHaveContent("element.classOriginal#idee[attr='eh']");

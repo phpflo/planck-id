@@ -24,8 +24,7 @@ class ReplaceStyleSelectors extends AbstractNonMarkupPlanckOut
      */
     public function __invoke($data) {
         lineOut(__METHOD__);
-        // lineOut('data2:'); lineOut($data);
-        // lineOut('style matches:'); lineOut($this->matches);
+        // lineOut('data2:'); lineOut($data); // lineOut('style matches:'); lineOut($this->matches);
 
         # also str_replace any content in matches so that when it loops later we don't have old versions if one selector is replaced?
         $content = (string) $data['content'];
@@ -37,11 +36,6 @@ class ReplaceStyleSelectors extends AbstractNonMarkupPlanckOut
 
         if (!is_array($this->matches)) 
             $this->matches = array($this->matches);
-
-        // lineOut('style matches after removing:'); lineOut($this->matches);
-        
-        // echo "<h1>HEY!</h1>";
-        // dump($this->matches);
 
         foreach ($this->matches as $key => $match) {
             $replaced = $match;
@@ -56,7 +50,6 @@ class ReplaceStyleSelectors extends AbstractNonMarkupPlanckOut
             lineOut('replacing `'.$data['original'].'` with `'.$data['new'].'`');
             lineOut('using the $match:'); lineOut($match);
             lineOut('result_of_replace_is:'); lineOut($replaced);
-            // lineOut('content is:'); lineOut($content);
         }
 
         $this->sendThenDisconnect('out', $data['content']);

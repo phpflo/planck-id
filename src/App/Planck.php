@@ -26,17 +26,17 @@ class Planck {
     }
 
     /**
-     * @param  Callable $mapOutput
+     * @param  callable $mapOutput
      * @return void
      */
-    function mapOut(Callable $mapOut) {
+    public function mapOut(callable $mapOut) {
         $this->mapOut = $mapOut;
     }
     /**
-     * @param  Callable $contentOut
+     * @param  callable $contentOut
      * @return void
      */
-    function contentOut(Callable $contentOut) {
+    public function contentOut(callable $contentOut) {
         $this->contentOut = $contentOut;
     }
 
@@ -44,64 +44,64 @@ class Planck {
      * @param  string $contentIn
      * @return void
      */
-    function contentIn($contentIn) {
+    public function contentIn($contentIn) {
         $this->contentIn = $contentIn;
     }
     /**
      * @param  json|array $mapIn
      * @return void
      */
-    function mapIn($mapIn) {
+    public function mapIn($mapIn) {
         $this->mapIn = $mapIn;
     }
     /**
      * @param  string $contentType (enum|constant)
      * @return void
      */
-    function setContentType($contentType) {
+    public function setContentType($contentType) {
         $this->contentType = $contentType;
     }
     /**
      * @param ExtendedFloGraph $graph
      * @return void
      */
-    function setGraph(ExtendedFloGraph $graph) {
+    public function setGraph(ExtendedFloGraph $graph) {
         $this->graph = $graph;
     }
     /**
      * @return ExtendedFloGraph
      */
-    function getGraph() {
+    public function getGraph() {
         return $this->graph;
     }
     /**
      * @return string
      */
-    function getContentType() {
+    public function getContentType() {
         return $this->contentType;
     }    
     /**
      * @return string
      */
-    function getMapOut() {
+    public function getMapOut() {
         return $this->mapOut;
     }    
     /**
      * @return string
      */
-    function getMapIn() {
+    public function getMapIn() {
         return $this->mapIn;
     }    
     /**
      * @return string
      */
-    function getContentIn() {
+    public function getContentIn() {
         return $this->contentIn;
     }    
     /**
      * @return string
      */
-    function getContentOut() {
+    public function getContentOut() {
         return $this->contentOut;
     }
 }
