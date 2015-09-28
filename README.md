@@ -14,7 +14,7 @@ Turns this:
 <a href="https://packagist.org/login/github" class="pull-right btn btn-primary btn-github">
     <span class="icon-github" id="special_github"></span>Use Github
 </a>
-<style>.pull-right, .btn, .btn-primary, .btn-github, .icon-github {} #special_github</style>
+<style>.pull-right, .btn, .btn-primary, .btn-github, .icon-github {} #special_github{}</style>
 <style>.btn{}</style>
 <script>var githubButtons = document.getElementsByClassName('btn-github'); var specialGithub = document.getElementById('special_github');</script>
 <script>githubIconButtons = $('.icon-github');</script>
@@ -24,7 +24,7 @@ Into this:
 <a href="https://packagist.org/login/github" class="c e a d">
     <span class="b" id="f"></span>Use Github
 </a>
-<style>.c, .e, .a, .d, .b {} #f</style>
+<style>.c, .e, .a, .d, .b {} #f{}</style>
 <style>.e{}</style>
 <script>var githubButtons = document.getElementsByClassName('d'); var specialGithub = document.getElementById('f');</script>
 <script>githubIconButtons = $('.b');</script>
