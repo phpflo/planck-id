@@ -1,7 +1,7 @@
 #PlanckId (planck-id)
 [![Build Status](https://secure.travis-ci.org/aretecode/planck-id.svg)](https://travis-ci.org/aretecode/planck-id)
 [![License](https://poser.pugx.org/aretecode/planck-id/license)](http://packagist.org/packages/aretecode/planck-id)
-[![Latest Unstable Version]](https://poser.pugx.org/aretecode/planck-id/v/unstable)
+[![Latest Unstable Version](https://poser.pugx.org/aretecode/planck-id/v/unstable)](https://poser.pugx.org/aretecode/planck-id/v/unstable)
 [![Codacy Badge](https://api.codacy.com/project/badge/6ea69f611cb84c63862b2750a5e48563)](http://www.codacy.com/app/aretecode/planck-id)
 ![shrinking](http://jonlieffmd.com/wp-content/uploads/2012/01/512px-Scale_one_to_thousand_volume.svg_3.png)
 
