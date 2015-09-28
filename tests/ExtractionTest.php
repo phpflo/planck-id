@@ -5,6 +5,11 @@ namespace PlanckId;
 use FeatureContext;
 
 class ExtractionTest extends \PHPUnit_Framework_TestCase {
+
+    public function onNonSuccessfulTest(\Exception $e) {
+      dump($e);
+    }
+
     public function testExtractingStyleSelectorOriginals() {
         $test9 = new FeatureContext([]);
         $test9->iHaveContent("element.classOriginal#idee[attr='eh']");
@@ -55,7 +60,6 @@ class ExtractionTest extends \PHPUnit_Framework_TestCase {
             "else" => "f",]);
 
         $test12->assertOutput();
-
     }    
 
     public function testExtractNewUsingExistingMap() {
@@ -75,7 +79,7 @@ class ExtractionTest extends \PHPUnit_Framework_TestCase {
             "post-simple-media-adjacent-left-8-media" => "b",
             "media-adjacent" => "c",
             "post-simple" => "d",
-            "left" => "e",]);  
+            "left" => "e"]);  
 
         // finds `else` and adds it, starting at `f`
         $test13->iShouldGetNonStringEqualing([
@@ -83,8 +87,8 @@ class ExtractionTest extends \PHPUnit_Framework_TestCase {
             "post-simple-media-adjacent-left-8-media" => "b",
             "media-adjacent" => "c",
             "post-simple" => "d",
-            "left" => "e",
-            "else" => "f",]);
+            "else" => "f",
+            "left" => "e"]);
 
         $test13->assertOutput();
     }

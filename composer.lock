@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a32928e270b76f9335ff8e419d01dbda",
-    "content-hash": "ab1e8002f0c9bbb5b2711baae0939206",
+    "hash": "b170bea5b7e12d28c2030699c7638441",
+    "content-hash": "fe60d096db48e13b6cdba386aaf08650",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -223,12 +223,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "b821ae46fc5f1502be168dc436091f44272e7be8"
+                "reference": "06beed7b72389ce5dbae901882d23d30f1b7b921"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/b821ae46fc5f1502be168dc436091f44272e7be8",
-                "reference": "b821ae46fc5f1502be168dc436091f44272e7be8",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/06beed7b72389ce5dbae901882d23d30f1b7b921",
+                "reference": "06beed7b72389ce5dbae901882d23d30f1b7b921",
                 "shasum": ""
             },
             "require": {
@@ -268,7 +268,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2015-09-26 17:45:33"
+            "time": "2015-09-28 12:57:13"
         },
         {
             "name": "league/event",
@@ -761,12 +761,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Transliterator.git",
-                "reference": "d198b77951fe55523a39528cedbc11bf99db9eca"
+                "reference": "868e05be3a9f25ba6424c2dd4849567f50715003"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Transliterator/zipball/d198b77951fe55523a39528cedbc11bf99db9eca",
-                "reference": "d198b77951fe55523a39528cedbc11bf99db9eca",
+                "url": "https://api.github.com/repos/Behat/Transliterator/zipball/868e05be3a9f25ba6424c2dd4849567f50715003",
+                "reference": "868e05be3a9f25ba6424c2dd4849567f50715003",
                 "shasum": ""
             },
             "require": {
@@ -793,7 +793,7 @@
                 "slug",
                 "transliterator"
             ],
-            "time": "2015-08-04 14:55:57"
+            "time": "2015-09-28 16:26:35"
         },
         {
             "name": "doctrine/instantiator",
@@ -1890,12 +1890,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "339fbfc19265de142e2a710e07df5d92098e0baa"
+                "reference": "1a7a91c03d1b8ce64938a4bd787c08d643e637c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/339fbfc19265de142e2a710e07df5d92098e0baa",
-                "reference": "339fbfc19265de142e2a710e07df5d92098e0baa",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/1a7a91c03d1b8ce64938a4bd787c08d643e637c0",
+                "reference": "1a7a91c03d1b8ce64938a4bd787c08d643e637c0",
                 "shasum": ""
             },
             "require": {
@@ -1942,7 +1942,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2015-09-26 19:48:07"
+            "time": "2015-09-28 16:42:41"
         },
         {
             "name": "symfony/event-dispatcher",

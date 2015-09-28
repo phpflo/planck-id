@@ -51,7 +51,7 @@ trait FeatureContents {
     /** @Then /^I should get non string equaling "([^"]*)"$/ */
     public function iShouldGetNonStringEqualing($data) {
         if ($data !== $this->output)
-            throw new Exception("Actual output is:\n" . var_export($this->output, true));
+            throw new Exception("Actual output is:\n" . var_export($this->output, true). "\n expected: \n" . var_export($data, true));
         return $this;
     }
 
