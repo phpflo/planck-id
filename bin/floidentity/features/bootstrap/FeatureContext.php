@@ -20,7 +20,7 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Memory\MemoryAdapter;
 
 #should do in the .yml
-require_once __DIR__.'/../../../../bootstrap.php';
+require_once __DIR__.'/../../../../vendor/autoload.php';
 
 /**
  * using the legend, but also adding new ones
