@@ -1,7 +1,7 @@
 {
     "name": "aretecode/planck-id",
     "type": "library",
-    "version": "0.11.1",
+    "version": "0.11.2",
     "description": "Minifies (almost) all HTML ids + classes, & CSS + JS selectors",
     "keywords": ["minify", "shrink", "optimize", "selector", "css", "js", "html", "planck", "planckid", "id", "planck-id"],
     "homepage": "https://github.com/aretecode/planck-id",
@@ -22,7 +22,6 @@
         "league/flysystem": "1.0.*",
         "league/flysystem-memory": "1.0.*"
     },
-
     "require-dev": {       
         "behat/behat": "~3.0",
         "phpunit/phpunit": "5.1.*"
@@ -32,10 +31,14 @@
     },    
     "extra": {
         "branch-alias": {
-            "dev-master": "0.11.1-dev"
+            "dev-master": "0.11.2-dev"
         }
     },
     "autoload": {
-        "psr-4": {"PlanckId\\": ["src/", "tests/"]}
+        "psr-4": {"PlanckId\\": ["src/", "tests/"]}, 
+        "files": [
+            "src/Utilities/functions.php",
+            "src/App/setupNodes.php"
+        ]
     }
 }

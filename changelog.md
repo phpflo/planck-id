@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.11.2 - 30/09/15
+### Fixed
+* bootstrap.php removed & files loaded using composer
+
 ## 0.11.1 - 28/09/15
 ### Added
 * [PlanckId\App\Traits\MixedExtractStrategy] created
