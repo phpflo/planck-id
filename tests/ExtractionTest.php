@@ -27,7 +27,7 @@ class ExtractionTest extends \PHPUnit_Framework_TestCase {
 
         // could also explode it and check for assertEquals
         $expected = 'section-acebf433-a6ec-43f6-8166-55c8d129353a,post-simple-media-adjacent-left-8-media,media-adjacent,post-simple,left,else';
-        if (hhvm) {
+        if (defined('HHVM_VERSION')) {
             $expected ='section-acebf433-a6ec-43f6-8166-55c8d129353a,post-simple-media-adjacent-left-8-media,media-adjacent,post-simple,else,left'
         }
 
