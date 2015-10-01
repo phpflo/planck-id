@@ -13,11 +13,6 @@ class ReplaceJavaScript extends AbstractNonMarkupPlanckOut
 {
     public function __invoke($data) {
         lineOut(__METHOD__);
-        // lineOut('using $matches:'); lineOut($this->matches);
-        // lineOut('replacing `'.$data['original'].'` with `'.$data['new'].'`');
-        // lineOut('using identity:'); lineOut($data['original']);
-
-        $matchesCopy = [];
         $content = (string) $data['content'];
        
         if (is_array($this->matches)) 
@@ -27,39 +22,6 @@ class ReplaceJavaScript extends AbstractNonMarkupPlanckOut
         if (!is_array($this->matches)) 
             $this->matches = array($this->matches);
 
-        // echo "WTF THIS MATCHES";
-        // dump($this->matches);
-        // $this->matches = end($matches);
-       
-        /*
-        foreach ($this->matches as $key => $match) {
-            preg_match_all('/(?<=\"|\')(?:.*?)('.$data['original'].')(?:.*?)(?=\"|\')/s', $match, $matches);
-            $matches = Arr::flatten($matches);
-            $matchCopy = "";
-
-            echo "<h1>MATCHES:</h1> \n<br>";
-            dump($matches);
-
-            foreach ($matches as $key => $subMatch) {        
-                $replacement = str_replace($data['original'], $data['new'], $subMatch);
-                // $content = str_replace($match, $matchesImploded, $content);
-                echo "REPLACMENT: \n<br>";
-                dump($replacement);
-                echo "MATCH: \n<br>";
-                dump($subMatch);
-                $content = $replacement;
-                $matches[$key] = $replacement;
-            }
-            $data['content']->setContent($content);
-        }
-        */
-
-    
-        //NEED TO SEPERATE OUT THE SELECTOR STUFF, LIKE IT IS IN REPLACESTYLESELECTORS... 
-        //FUCKING WEIRD AND SILLY... I KNOW I AM MISSING SOMETHING IN THE REGEX...
-        
-        // dump("JAVASCRIPT MATCHES: _______________<hr>");
-        // dump($this->matches);
         foreach ($this->matches as $key => $match) {
 
             # with and without `.` & `#`
@@ -69,14 +31,12 @@ class ReplaceJavaScript extends AbstractNonMarkupPlanckOut
            
             // ([a-zA-Z0-9-\s]*)
             preg_match_all('/(?<=\'|")(.*?)(?=\'|\")/', $match, $matches);
-            // echo "WTF MATCHES";
+            // echo "MATCHES";
             // dump($matches);
 
             $matches = $matches[1];
             $matches = Arr::flatten($matches);
             $matchCopy = "";
-            // echo "WTF MATCHES";
-            // dump($matches);
 
             foreach ($matches as $match2) {        
 
@@ -94,10 +54,6 @@ class ReplaceJavaScript extends AbstractNonMarkupPlanckOut
                     continue;
                 }
 
-                // ECHO "<H1>attempting to substring</H1>";
-                // dump($match2);
-                // dump($data['original']);
-             
                 $positions = substringAll($match2, $data['original']);
                 $disallowedChars = array_merge(range('a', 'z'), range('A', 'Z'), range('0', '9'), ['-', '_', '+',]);
 
@@ -200,70 +156,4 @@ class ReplaceJavaScript extends AbstractNonMarkupPlanckOut
 
         $this->sendIfAttached('out', $data['content']);
     }
-
-
-
-    # $replaced = preg_replace('/(?<=\"|\')(?:.*?)('.$data['original'].')(?:.*?)(?=\"|\')/', '__b4__$0__post__', $this->matches[$key]);
-
-
-    function replaceLikeMarkup($content, $data) {            
-
-
-        $matchesCopy[$key] = (string) $match;
-            
-
-
-
-
-
-            preg_match_all('/(?<=\"|\')([a-zA-Z0-9-\s]*)(?=\"|\')/s', $match, $matches);
-            $matches = Arr::flatten($matches);
-            $matchCopy = "";
-
-            echo "<h1>MATCHES:</h1>";
-            dump($matches);
-            dump($data);
-
-            foreach ($matches as $match) {        
-                $matchesExploded = explode(" ", $match);
-                foreach ($matchesExploded as $key => $subMatch) {
-                    $matchesExploded[$key] = str_replace($data['original'], $data['new'], $subMatch);
-                }
-                $matchesImploded = implode(" ", $matchesExploded);
-                $content = str_replace($match, $matchesImploded, $content);
-            }
-            $data['content']->setContent($content);
-
-
-            //$replaced = preg_replace('/(?:\"|\'?)(?:.*?)('.$data['original'].')(?:.*?)(?=\"|\')/s', '__b4__$0__post__', $this->matches[$key]);
-
-            // dump("JAVASCRIPT MATCHES: _______________<hr>");
-            // dump($match);(?<=\"|\')
-            /*
-            $replaced = preg_replace_callback('/(?:\"|\'?)(?:.*?)('.$data['original'].')(?:.*?)(?=\"|\')/s', 
-                function($matches) use ($data) {
-                    dump("DUH HELLO!");
-                    dump($matches);
-                    
-                    $matchzzz = end($matches);
-                    dump($matchzzz);
-                    dump($data['new']);
-
-                    if ($matchzzz == $data['original'])
-                        return $data['new'];
-                    
-                    return $matchzzz;
-                },
-                $this->matches[$key]
-            );
-          
-           
-            // $replaced = str_replace($data['original'], $data['new'], $this->matches[$key]);
-            $this->matches[$key] = $replaced;
-            $content = str_replace($matchesCopy[$key], $replaced, $content);
-            $data['content']->setContent($content);
-            // dump('replacing `'.$data['original'].'` with `'.$data['new'].'`');
-            */
-    }
-
 }
