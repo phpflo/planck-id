@@ -23,7 +23,7 @@ class PlanckCollectionBuilder {
      * @return PlanckCollectionIterator
      */
     public static function built() {
-        return (new Self)->build();
+        return (new self)->build();
     }
 
     /**
