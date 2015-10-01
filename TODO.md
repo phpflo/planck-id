@@ -138,7 +138,8 @@ Scenario: Extract and Minify Markup and Style Selectors from Contents using Filt
 * [x] set it to only extract from Markup, then replace only those in Script & Style
 * [x] have FeatureContext use & test [Planck\Planck]
 * [ ] add tests extracting only identities or classes to the app/
- 
+* [ ] add support for Twig & other templating systems (thanks @xsanisty)
+
 ### possibly in the future 
 * [ ] could redo using complete OOP, also could use EDD
 * [x] content could have a ReadContent & WriteContent

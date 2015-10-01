@@ -10,10 +10,15 @@
          syntaxCheck="true"
          verbose="true"
          bootstrap="tests/bootstrap.php">
-
+         
     <testsuites>
         <testsuite name="planck-id/tests">
-            <directory>./tests</directory>
+            <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./src/</directory>
+        </whitelist>
+    </filter>
 </phpunit>
