@@ -1,5 +1,6 @@
 #PlanckId (planck-id)
 [![Build Status](https://secure.travis-ci.org/aretecode/planck-id.svg)](https://travis-ci.org/aretecode/planck-id)
+[![HHVM Status](http://hhvm.h4cc.de/badge/aretecode/planck-id.svg)](http://hhvm.h4cc.de/package/aretecode/planck-id)
 [![License](https://poser.pugx.org/aretecode/planck-id/license)](http://packagist.org/packages/aretecode/planck-id)
 [![Latest Unstable Version](https://poser.pugx.org/aretecode/planck-id/v/unstable)](https://poser.pugx.org/aretecode/planck-id/v/unstable)
 [![Codacy Badge](https://api.codacy.com/project/badge/6ea69f611cb84c63862b2750a5e48563)](http://www.codacy.com/app/aretecode/planck-id)
