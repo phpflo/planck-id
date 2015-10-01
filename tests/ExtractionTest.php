@@ -24,7 +24,14 @@ class ExtractionTest extends \PHPUnit_Framework_TestCase {
           <script>if (1){} else {var test = document.getElementById("post-simple-media-adjacent-left-8-media"); $post-simple-media-adjacent-left-8-media} </script>
         ');
         $test10->onlyExtract();
-        $test10->iShouldGet("section-acebf433-a6ec-43f6-8166-55c8d129353a,post-simple-media-adjacent-left-8-media,media-adjacent,post-simple,left,else");
+
+        // could also explode it and check for assertEquals
+        $expected = 'section-acebf433-a6ec-43f6-8166-55c8d129353a,post-simple-media-adjacent-left-8-media,media-adjacent,post-simple,left,else';
+        if (hhvm) {
+            $expected ='section-acebf433-a6ec-43f6-8166-55c8d129353a,post-simple-media-adjacent-left-8-media,media-adjacent,post-simple,else,left'
+        }
+
+        $test10->iShouldGet($expected);
         $test10->assertOutput();
     }
     public function testExtractUsingExistingMap() {
@@ -40,20 +47,20 @@ class ExtractionTest extends \PHPUnit_Framework_TestCase {
         ');
 
         $test12->extractUsingExistingMap([
-            "section-acebf433-a6ec-43f6-8166-55c8d129353a" => "a",
-            "post-simple-media-adjacent-left-8-media" => "b",
-            "media-adjacent" => "c",
-            "post-simple" => "d",
-            "left" => "e",
-            "else" => "f",]);  
+            'section-acebf433-a6ec-43f6-8166-55c8d129353a' => 'a',
+            'post-simple-media-adjacent-left-8-media' => 'b',
+            'media-adjacent' => 'c',
+            'post-simple' => 'd',
+            'left' => 'e',
+            'else' => 'f',]);  
 
         $test12->iShouldGetNonStringEqualing([
-            "section-acebf433-a6ec-43f6-8166-55c8d129353a" => "a",
-            "post-simple-media-adjacent-left-8-media" => "b",
-            "media-adjacent" => "c",
-            "post-simple" => "d",
-            "left" => "e",
-            "else" => "f",]);
+            'section-acebf433-a6ec-43f6-8166-55c8d129353a' => 'a',
+            'post-simple-media-adjacent-left-8-media' => 'b',
+            'media-adjacent' => 'c',
+            'post-simple' => 'd',
+            'left' => 'e',
+            'else' => 'f',]);
 
         $test12->assertOutput();
     }    
@@ -79,19 +86,19 @@ class ExtractionTest extends \PHPUnit_Framework_TestCase {
 
         // finds `else` and adds it, starting at `f`
         $test13->iShouldGetNonStringEqualingEither([
-            "section-acebf433-a6ec-43f6-8166-55c8d129353a" => "a",
-            "post-simple-media-adjacent-left-8-media" => "b",
-            "media-adjacent" => "c",
-            "post-simple" => "d",
-            "else" => "f",
-            "left" => "e"], 
+            'section-acebf433-a6ec-43f6-8166-55c8d129353a' => 'a',
+            'post-simple-media-adjacent-left-8-media' => 'b',
+            'media-adjacent' => 'c',
+            'post-simple' => 'd',
+            'else' => 'f',
+            'left' => 'e'], 
 
-            ["section-acebf433-a6ec-43f6-8166-55c8d129353a" => "a",
-            "post-simple-media-adjacent-left-8-media" => "b",
-            "media-adjacent" => "c",
-            "post-simple" => "d",
-            "left" => "e",
-            "else" => "f",]);
+            ['section-acebf433-a6ec-43f6-8166-55c8d129353a' => 'a',
+            'post-simple-media-adjacent-left-8-media' => 'b',
+            'media-adjacent' => 'c',
+            'post-simple' => 'd',
+            'left' => 'e',
+            'else' => 'f',]);
 
         $test13->assertOutput();
     }
