@@ -108,7 +108,6 @@ function runFrom($content, $mapFile, $contentType, $method) {
 function getHelpText()
 {
     return <<<HELP
-CommonMark - Markdown done right
 Usage: planck [INPUTFILE|INPUTCONTENT] [MAPFILE] [CONTENT] [METHOD] [OPTIONS] 
     -h, --help  Shows help and usage information
     If no file is given, input will be read from STDIN
